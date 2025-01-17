@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\TranslationManageController;
 use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\HomeCardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,6 +76,14 @@ Route::prefix('admin')->group(function () {
             Route::get('seo/{id}/edit', [SeoController::class, 'edit'])->name('seo.edit');
             Route::put('seo/{id}', [SeoController::class, 'update'])->name('seo.update');
             Route::delete('seo/{id}', [SeoController::class, 'destroy'])->name('seo.destroy');
+
+            Route::resource('home-cards', HomeCardController::class);
+            Route::get('home-cards', [HomeCardController::class, 'index'])->name('home-cards.index');
+            Route::get('home-cards/create', [HomeCardController::class, 'create'])->name('home-cards.create');
+            Route::post('home-cards', [HomeCardController::class, 'store'])->name('home-cards.store');
+            Route::get('home-cards/{id}/edit', [HomeCardController::class, 'edit'])->name('home-cards.edit');
+            Route::put('home-cards/{id}', [HomeCardController::class, 'update'])->name('home-cards.update');
+            Route::delete('home-cards/{id}', [HomeCardController::class, 'destroy'])->name('home-cards.destroy');
             
 
         });

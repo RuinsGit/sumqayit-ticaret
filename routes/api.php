@@ -39,3 +39,6 @@ Route::prefix('seo')->group(function () {
     Route::put('/{id}', [App\Http\Controllers\Api\SeoController::class, 'update']);
     Route::delete('/{id}', [App\Http\Controllers\Api\SeoController::class, 'destroy']);
 });
+// Home Card Routes
+Route::get('/home-cards', [HomeCardController::class, 'index']);
+Route::get('/home-cards/{id}', [HomeCardController::class, 'show']);
