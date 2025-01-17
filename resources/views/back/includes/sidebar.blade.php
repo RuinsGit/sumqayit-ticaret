@@ -67,7 +67,16 @@
                                 <i class="mdi mdi-home"></i>
                                 <span>Hero</span>
                             </a>
+                        </li>   
+
+                        <li>
+                            <a href="{{ route('back.pages.home-about.index') }}">
+                                <i class="mdi mdi-home"></i>
+                                <span>About</span>
+                            </a>
                         </li>
+
+
                         
                         
 

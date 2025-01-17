@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\TranslationManageController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\HomeCardController;
+use App\Http\Controllers\Admin\HomeAboutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -85,6 +86,14 @@ Route::prefix('admin')->group(function () {
             Route::put('home-cards/{id}', [HomeCardController::class, 'update'])->name('home-cards.update');
             Route::delete('home-cards/{id}', [HomeCardController::class, 'destroy'])->name('home-cards.destroy');
             
+
+            Route::resource('home-about', HomeAboutController::class);
+            Route::get('home-about', [HomeAboutController::class, 'index'])->name('home-about.index');
+            Route::get('home-about/create', [HomeAboutController::class, 'create'])->name('home-about.create');
+            Route::post('home-about', [HomeAboutController::class, 'store'])->name('home-about.store');
+            Route::get('home-about/{id}/edit', [HomeAboutController::class, 'edit'])->name('home-about.edit');
+            Route::put('home-about/{id}', [HomeAboutController::class, 'update'])->name('home-about.update');
+            Route::delete('home-about/{id}', [HomeAboutController::class, 'destroy'])->name('home-about.destroy');
 
         });
     });
