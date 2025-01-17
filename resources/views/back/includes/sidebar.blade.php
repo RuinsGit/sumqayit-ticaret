@@ -6,7 +6,7 @@
         <!-- User details -->
         <div class="user-profile text-center mt-3">
             <div class="">
-                <img src="{{ asset('back/assets/images/logo-eneraz.webp') }}" width="80" alt="">
+                <img src="{{ asset('back/assets/images/logo.svg') }}" width="80" alt="">
             </div>
             <div class="mt-3">
                 <h4 class="font-size-16 mb-1">{{ auth()->user()->name }}</h4>
@@ -34,9 +34,19 @@
                         <span>Tənzimləmələr</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Tərcümələr</a></li>
-                        <li><a href="#">Ümumi tənzimləmələr</a></li>
-                        <li><a href="#">Haqqımızda</a></li>
+                    <li>
+                            <a href="{{ route('back.pages.logos.index') }}">
+                                <i class="mdi mdi-image"></i>
+                                <span>Logolar</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('back.pages.translation-manage.index') }}">
+                                <i class="mdi mdi-translate"></i>
+                                <span>Tərcümələr</span>
+                            </a>
+                        </li>
+                      
                     </ul>
                 </li>
             </ul>

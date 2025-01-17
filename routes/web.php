@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PageController;
-
-
+use App\Http\Controllers\Admin\LogoController;
+use App\Http\Controllers\Admin\TranslationManageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +42,25 @@ Route::prefix('admin')->group(function () {
 
         Route::prefix('pages')->name('back.pages.')->group(function () {
             Route::get('index', [PageController::class, 'index'])->name('index');
+
+            Route::resource('logos', LogoController::class);
+            Route::get('logos', [LogoController::class, 'index'])->name('logos.index');
+            Route::get('logos/create', [LogoController::class, 'create'])->name('logos.create');
+            Route::post('logos', [LogoController::class, 'store'])->name('logos.store');
+            Route::get('logos/{id}', [LogoController::class, 'show'])->name('logos.show');
+            Route::get('logos/{id}/edit', [LogoController::class, 'edit'])->name('logos.edit');
+            Route::put('logos/{id}', [LogoController::class, 'update'])->name('logos.update');
+            Route::delete('logos/{id}', [LogoController::class, 'destroy'])->name('logos.destroy');
+
+
+            Route::resource('translation-manage', TranslationManageController::class);
+            Route::get('translation-manage', [TranslationManageController::class, 'index'])->name('translation-manage.index');
+            Route::get('translation-manage/create', [TranslationManageController::class, 'create'])->name('translation-manage.create');
+            Route::post('translation-manage', [TranslationManageController::class, 'store'])->name('translation-manage.store');
+            Route::get('translation-manage/{translation}/edit', [TranslationManageController::class, 'edit'])->name('translation-manage.edit');
+            Route::put('translation-manage/{translation}', [TranslationManageController::class, 'update'])->name('translation-manage.update');
+            Route::delete('translation-manage/{translation}', [TranslationManageController::class, 'destroy'])->name('translation-manage.destroy');
+
         });
     });
 });
