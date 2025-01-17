@@ -12,12 +12,16 @@
     <meta content="Buy Brand Tools Admin" name="description" />
     <meta content="Buy Brand Tools Admin" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('back/assets/') }}/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('back/assets/') }}/images/logo.svg">
 
     <!-- jquery.vectormap css -->
     <link href="{{ asset('back/assets/') }}/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css"
         rel="stylesheet" type="text/css" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+    
     <!-- DataTables -->
     <link href="{{ asset('back/assets/') }}/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet"
         type="text/css" />

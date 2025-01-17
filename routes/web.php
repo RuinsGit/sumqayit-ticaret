@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\LogoController;
 use App\Http\Controllers\Admin\TranslationManageController;
+use App\Http\Controllers\Admin\SeoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +61,21 @@ Route::prefix('admin')->group(function () {
             Route::get('translation-manage/{translation}/edit', [TranslationManageController::class, 'edit'])->name('translation-manage.edit');
             Route::put('translation-manage/{translation}', [TranslationManageController::class, 'update'])->name('translation-manage.update');
             Route::delete('translation-manage/{translation}', [TranslationManageController::class, 'destroy'])->name('translation-manage.destroy');
+
+             // SEO routes
+           
+            Route::resource('seo', SeoController::class);
+                
+
+            Route::get('seo/toggle-status/{id}', [SeoController::class, 'toggleStatus'])->name('seo.toggle-status');
+            Route::post('seo/toggle-status/{id}', [SeoController::class, 'toggleStatus'])->name('seo.toggle-status.post');
+            Route::get('seo', [SeoController::class, 'index'])->name('seo.index');
+            Route::get('seo/create', [SeoController::class, 'create'])->name('seo.create');
+            Route::post('seo', [SeoController::class, 'store'])->name('seo.store');
+            Route::get('seo/{id}/edit', [SeoController::class, 'edit'])->name('seo.edit');
+            Route::put('seo/{id}', [SeoController::class, 'update'])->name('seo.update');
+            Route::delete('seo/{id}', [SeoController::class, 'destroy'])->name('seo.destroy');
+            
 
         });
     });
