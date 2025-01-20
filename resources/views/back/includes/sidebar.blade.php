@@ -90,6 +90,13 @@
                                 <i class="ri-service-line"></i>
                                 <span>Xidmətlər</span>
                             </a>
+                        </li>   
+
+                        <li>
+                            <a href="{{ route('back.pages.contact.index') }}">
+                                <i class="ri-contacts-line"></i>
+                                <span>Əlaqə</span>
+                            </a>
                         </li>
 
 

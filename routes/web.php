@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\HomeCardController;
 use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -106,6 +107,15 @@ Route::prefix('admin')->group(function () {
 
             Route::get('services/toggle-status/{id}', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status');
             Route::post('services/toggle-status/{id}', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status.post');
+
+
+              // Contact routes
+              Route::get('contact', [ContactController::class, 'index'])->name('contact.index');
+              Route::get('contact/create', [ContactController::class, 'create'])->name('contact.create');
+              Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
+              Route::get('contact/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
+              Route::put('contact/{id}', [ContactController::class, 'update'])->name('contact.update');
+              Route::delete('contact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
 
         });
     });
