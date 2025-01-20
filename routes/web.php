@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\GalleryVideoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -125,6 +126,14 @@ Route::prefix('admin')->group(function () {
             Route::get('galleries/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
             Route::put('galleries/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
             Route::delete('galleries/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
+
+            // Gallery Video routes
+            Route::get('gallery-videos', [GalleryVideoController::class, 'index'])->name('gallery-videos.index');
+            Route::get('gallery-videos/create', [GalleryVideoController::class, 'create'])->name('gallery-videos.create');
+            Route::post('gallery-videos', [GalleryVideoController::class, 'store'])->name('gallery-videos.store');
+            Route::get('gallery-videos/{galleryVideo}/edit', [GalleryVideoController::class, 'edit'])->name('gallery-videos.edit');
+            Route::put('gallery-videos/{galleryVideo}', [GalleryVideoController::class, 'update'])->name('gallery-videos.update');
+            Route::delete('gallery-videos/{galleryVideo}', [GalleryVideoController::class, 'destroy'])->name('gallery-videos.destroy');
 
         });
     });

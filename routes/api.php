@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TranslationManageController;
 use App\Http\Controllers\Api\LogoApiController;
 use App\Http\Controllers\Api\SeoController;
+use App\Http\Controllers\Api\GalleryVideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,12 @@ Route::prefix('seo')->group(function () {
 // Home Card Routes
 Route::get('/home-cards', [HomeCardController::class, 'index']);
 Route::get('/home-cards/{id}', [HomeCardController::class, 'show']);
+
+// Gallery Video Routes
+Route::prefix('gallery-videos')->group(function () {
+    Route::get('/', [GalleryVideoController::class, 'index']);
+    Route::get('/latest/{limit?}', [GalleryVideoController::class, 'getLatest']);
+    Route::get('/paginated/{perPage?}', [GalleryVideoController::class, 'getPaginated']);
+    Route::get('/{id}', [GalleryVideoController::class, 'show']);
+    Route::get('/slug/{lang}/{slug}', [GalleryVideoController::class, 'getBySlug']);
+});

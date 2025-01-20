@@ -100,14 +100,38 @@
                             </a>
                         </li>
 
+                       
+
                         <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-image-line"></i>
+                        <span>Galeriya</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                       
+                  
+
+                       
+
+                    <li>
                             <a href="{{ route('back.pages.galleries.index') }}">
                                 <i class="ri-image-line"></i>
                                 <span>Galeriya Sekiller</span>
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{ route('back.pages.gallery-videos.index') }}">
+                                <i class="ri-video-line"></i>
+                                <span>Galeriya Videolar</span>
+                            </a>
+                        </li>
+                        
+                        
 
+                         
+                       
+                    </ul>
 
                         
 
