@@ -23,7 +23,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-12">
                                         <label class="form-label" for="key">Key</label>
-                                        <input type="text" class="form-control @error('key') is-invalid @enderror" id="key" name="key" value="{{ old('key', $seo->key) }}" required>
+                                        <input type="text" class="form-control @error('key') is-invalid @enderror" id="key" name="key" value="{{ old('key', $seo->key) }}" readonly required>
                                         @error('key')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror

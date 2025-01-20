@@ -18,7 +18,7 @@ class HomeAbout extends Model
         'images', 'images_alt_az', 'images_alt_en', 'images_alt_ru'
     ];
 
-    // Resimleri dizi olarak alabilmek için bir accessor
+
     protected $casts = [
         'images' => 'array',
         'images_alt_az' => 'array',
