@@ -90,7 +90,8 @@
                                 <i class="ri-service-line"></i>
                                 <span>Xidmətlər</span>
                             </a>
-                        </li>   
+                        </li>
+
 
                         <li>
                             <a href="{{ route('back.pages.contact.index') }}">
@@ -98,6 +99,20 @@
                                 <span>Əlaqə</span>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="{{ route('back.pages.galleries.index') }}">
+                                <i class="ri-image-line"></i>
+                                <span>Galeriya Sekiller</span>
+                            </a>
+                        </li>
+
+
+
+                        
+
+
+
 
 
 

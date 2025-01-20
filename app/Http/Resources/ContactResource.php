@@ -27,6 +27,12 @@ class ContactResource extends JsonResource
                 'image' => $this->address_image ? asset($this->address_image) : null,
                 'title' => $this->filial_description,
                 'id' => $this->id + 2,
+            ],
+            [
+                'value' => $this->work_hours,
+                'image' => $this->work_hours_image ? asset($this->work_hours_image) : null,
+                'title' => $this->filial_description,
+                'id' => $this->id + 3,
             ]
         ];
     }

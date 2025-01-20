@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\HomeCardController;
 use App\Http\Controllers\Admin\HomeAboutController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\GalleryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -116,6 +117,14 @@ Route::prefix('admin')->group(function () {
               Route::get('contact/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
               Route::put('contact/{id}', [ContactController::class, 'update'])->name('contact.update');
               Route::delete('contact/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
+            // Gallery routes
+            Route::get('galleries', [GalleryController::class, 'index'])->name('galleries.index');
+            Route::get('galleries/create', [GalleryController::class, 'create'])->name('galleries.create');
+            Route::post('galleries', [GalleryController::class, 'store'])->name('galleries.store');
+            Route::get('galleries/{gallery}/edit', [GalleryController::class, 'edit'])->name('galleries.edit');
+            Route::put('galleries/{gallery}', [GalleryController::class, 'update'])->name('galleries.update');
+            Route::delete('galleries/{gallery}', [GalleryController::class, 'destroy'])->name('galleries.destroy');
 
         });
     });
