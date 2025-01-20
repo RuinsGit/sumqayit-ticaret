@@ -71,8 +71,8 @@
 
                         <li>
                             <a href="{{ route('back.pages.home-about.index') }}">
-                                <i class="mdi mdi-home"></i>
-                                <span>About</span>
+                                <i class="mdi mdi-account"></i>
+                                <span>Haqqımızda</span>
                             </a>
                         </li>
 
@@ -87,8 +87,8 @@
                     </ul>
                     <li>
                             <a href="{{ route('back.pages.services.index') }}">
-                                <i class="mdi mdi-home"></i>
-                                <span>Services</span>
+                                <i class="ri-service-line"></i>
+                                <span>Xidmətlər</span>
                             </a>
                         </li>
 
