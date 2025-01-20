@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\TranslationManageController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\HomeCardController;
 use App\Http\Controllers\Admin\HomeAboutController;
+use App\Http\Controllers\Admin\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -94,6 +95,17 @@ Route::prefix('admin')->group(function () {
             Route::get('home-about/{id}/edit', [HomeAboutController::class, 'edit'])->name('home-about.edit');
             Route::put('home-about/{id}', [HomeAboutController::class, 'update'])->name('home-about.update');
             Route::delete('home-about/{id}', [HomeAboutController::class, 'destroy'])->name('home-about.destroy');
+
+            Route::resource('services', ServiceController::class);
+            Route::get('services', [ServiceController::class, 'index'])->name('services.index');
+            Route::get('services/create', [ServiceController::class, 'create'])->name('services.create');
+            Route::post('services', [ServiceController::class, 'store'])->name('services.store');
+            Route::get('services/{id}/edit', [ServiceController::class, 'edit'])->name('services.edit');
+            Route::put('services/{id}', [ServiceController::class, 'update'])->name('services.update');
+            Route::delete('services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+            Route::get('services/toggle-status/{id}', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status');
+            Route::post('services/toggle-status/{id}', [ServiceController::class, 'toggleStatus'])->name('services.toggle-status.post');
 
         });
     });

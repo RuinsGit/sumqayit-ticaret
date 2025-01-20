@@ -76,6 +76,8 @@
                             </a>
                         </li>
 
+                       
+
 
                         
                         
@@ -83,6 +85,13 @@
                          
                        
                     </ul>
+                    <li>
+                            <a href="{{ route('back.pages.services.index') }}">
+                                <i class="mdi mdi-home"></i>
+                                <span>Services</span>
+                            </a>
+                        </li>
+
 
 
 

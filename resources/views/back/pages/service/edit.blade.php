@@ -1,158 +1,165 @@
 @extends('back.layouts.master')
 
+@section('title', 'Xidməti Redaktə Et')
+
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
-
-            <!-- start page title -->
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Xidmətlər</h4>
-
+                        <h4 class="mb-sm-0">Xidməti Redaktə Et</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.service.index') }}">Xidmətlər</a>
-                                </li>
-                                <li class="breadcrumb-item active">Redaktə et</li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Ana səhifə</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('back.pages.services.index') }}">Xidmətlər</a></li>
+                                <li class="breadcrumb-item active">Redaktə</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <!-- end page title -->
 
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Xidmət redaktə et</h4>
-                            <ul class="nav nav-pills nav-justified" role="tablist">
-                                <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#az" role="tab">
-                                        <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">AZ</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#en" role="tab">
-                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                        <span class="d-none d-sm-block">EN</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#ru" role="tab">
-                                        <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                        <span class="d-none d-sm-block">RU</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <form class="needs-validation" method="POST"
-                                action="{{ route('admin.service.update', ['id' => $service->id]) }}"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('back.pages.services.update', $service->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    <div class="tab-content p-3 text-muted">
-                                        <div class="tab-pane active" id="az">
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Başlıq (Az)</label>
-                                                    <input type="text" name="title_az" value="{{ $service->title_az }}"
-                                                        class="form-control">
-                                                    @error('title_az')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
+                                @method('PUT')
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#az" role="tab">
+                                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                            <span class="d-none d-sm-block">AZ</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#en" role="tab">
+                                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                            <span class="d-none d-sm-block">EN</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#ru" role="tab">
+                                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                            <span class="d-none d-sm-block">RU</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content p-3 text-muted">
+                                    <!-- Az tab -->
+                                    <div class="tab-pane active" id="az" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label class="form-label">Başlıq (AZ)</label>
+                                            <input type="text" name="title_az" class="form-control" value="{{ old('title_az', $service->title_az) }}">
+                                            @error('title_az')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        <div class="tab-pane" id="en">
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Başlıq (En)</label>
-                                                    <input type="text" name="title_en" value="{{ $service->title_en }}"
-                                                        class="form-control">
-                                                    @error('title_en')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="ru">
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Başlıq (Ru)</label>
-                                                    <input type="text" name="title_ru" value="{{ $service->title_ru }}"
-                                                        class="form-control">
-                                                    @error('title_ru')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Mətn (AZ)</label>
+                                            <textarea name="description_az" class="form-control summernote">{{ old('description_az', $service->description_az) }}</textarea>
+                                            @error('description_az')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <!-- En tab -->
+                                    <div class="tab-pane" id="en" role="tabpanel">
                                         <div class="mb-3">
-                                            <label for="" class="form-label">İkon</label>
-                                            <input type="file" name="icon" accept=".png,.jpg,.svg"
-                                                class="form-control">
-                                            <div class="upload-container row mt-3">
-                                                <div class="col-md-3 col-sm-6 mb-3">
-                                                    <div class="upload-image">
-                                                        <img src="{{ asset($service->icon) }}" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @error('image')
-                                                <div class="invalid-feedback" style="display: block">
-                                                    {{ $message }}
-                                                </div>
+                                            <label class="form-label">Title (EN)</label>
+                                            <input type="text" name="title_en" class="form-control" value="{{ old('title_en', $service->title_en) }}">
+                                            @error('title_en')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Description (EN)</label>
+                                            <textarea name="description_en" class="form-control summernote">{{ old('description_en', $service->description_en) }}</textarea>
+                                            @error('description_en')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <!-- Ru tab -->
+                                    <div class="tab-pane" id="ru" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label class="form-label">Заголовок (RU)</label>
+                                            <input type="text" name="title_ru" class="form-control" value="{{ old('title_ru', $service->title_ru) }}">
+                                            @error('title_ru')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Текст (RU)</label>
+                                            <textarea name="description_ru" class="form-control summernote">{{ old('description_ru', $service->description_ru) }}</textarea>
+                                            @error('description_ru')
+                                            <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-primary" type="submit">Təsdiqlə</button>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Üst Şəkil</label>
+                                        @if($service->image)
+                                            <div class="mb-2">
+                                                <img src="{{ asset($service->image) }}" alt="Current Image" class="img-thumbnail" style="max-height: 150px">
+                                            </div>
+                                        @endif
+                                        <input type="file" name="image" class="form-control">
+                                        @error('image')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <!-- <div class="col-md-6">
+                                        <label class="form-label">Alt Şəkil</label>
+                                        @if($service->bottom_image)
+                                            <div class="mb-2">
+                                                <img src="{{ asset($service->bottom_image) }}" alt="Current Bottom Image" class="img-thumbnail" style="max-height: 150px">
+                                            </div>
+                                        @endif
+                                        <input type="file" name="bottom_image" class="form-control">
+                                        @error('bottom_image')
+                                        <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div> -->
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Yadda saxla</button>
+                                        <a href="{{ route('back.pages.services.index') }}" class="btn btn-secondary">Ləğv et</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <!-- end card -->
-                </div> <!-- end col -->
+                </div>
             </div>
-            <!-- end row -->
-
-        </div> <!-- container-fluid -->
+        </div>
     </div>
-    <!-- End Page-content -->
 @endsection
 
 @push('css')
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('back/assets/libs/select2/css/select2.min.css') }}">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endpush
 
 @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script src="{{ asset('back/assets/js/pages/file-upload.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $(".summernote").summernote();
-            $('.dropdown-toggle').dropdown();
-        });
-    </script>
-    <!-- //Summernote JS - CDN Link -->
-
-    <script src="{{ asset('back/assets/libs/select2/js/select2.min.js') }}"></script>
-    <script>
-        $('select').select2();
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".summernote").summernote();
+        $('.dropdown-toggle').dropdown();
+    });
+</script>
 @endpush
