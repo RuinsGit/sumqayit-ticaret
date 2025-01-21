@@ -1,5 +1,11 @@
 <!-- ========== Left Sidebar Start ========== -->
-<div class="vertical-menu">
+<style>
+.vertical-menu::-webkit-scrollbar {
+    display: none;
+}
+</style>
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu" style="overflow-y: scroll;">
 
     <div data-simplebar class="h-100">
 
