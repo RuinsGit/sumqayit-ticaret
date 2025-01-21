@@ -16,7 +16,7 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="key" class="form-label">Key:</label>
-                                <input type="text" name="key" id="key" class="form-control" value="{{ $translationManage->key }}" required>
+                                <input type="text" name="key" id="key" class="form-control" value="{{ $translationManage->key }}" readonly required>
                             </div>
                             <div class="mb-3">
                                 <label for="value_az" class="form-label">Value (AZ):</label>
