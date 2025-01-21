@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\GalleryVideoController;
+use App\Http\Controllers\Admin\BlogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -134,6 +135,15 @@ Route::prefix('admin')->group(function () {
             Route::get('gallery-videos/{galleryVideo}/edit', [GalleryVideoController::class, 'edit'])->name('gallery-videos.edit');
             Route::put('gallery-videos/{galleryVideo}', [GalleryVideoController::class, 'update'])->name('gallery-videos.update');
             Route::delete('gallery-videos/{galleryVideo}', [GalleryVideoController::class, 'destroy'])->name('gallery-videos.destroy');
+
+
+             // Blog routes
+             Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+             Route::get('blog/create', [BlogController::class, 'create'])->name('blog.create');
+             Route::post('blog', [BlogController::class, 'store'])->name('blog.store');
+             Route::get('blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+             Route::put('blog/{id}', [BlogController::class, 'update'])->name('blog.update');
+             Route::delete('blog/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
 
         });
     });

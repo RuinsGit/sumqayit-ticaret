@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\LogoApiController;
 use App\Http\Controllers\Api\SeoController;
 use App\Http\Controllers\Api\GalleryVideoController;
 use App\Http\Controllers\Api\GalleryController;
+use App\Http\Controllers\Api\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,15 @@ Route::prefix('seo')->group(function () {
     Route::post('/', [SeoController::class, 'store']);
     Route::put('/{id}', [SeoController::class, 'update']);
     Route::delete('/{id}', [SeoController::class, 'destroy']);
+});
+
+// Blog Routes
+Route::prefix('blogs')->group(function () {
+    Route::get('/', [BlogController::class, 'index']);
+    Route::get('/latest/{limit?}', [BlogController::class, 'getLatest']);
+    Route::get('/paginated/{perPage?}', [BlogController::class, 'getPaginated']);
+    Route::get('/slug/{lang}/{slug}', [BlogController::class, 'getBySlug']);
+    Route::get('/{id}', [BlogController::class, 'show']);
 });
 
 // Gallery Video Routes

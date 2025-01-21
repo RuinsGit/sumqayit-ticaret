@@ -1,364 +1,410 @@
 @extends('back.layouts.master')
 
+@section('title', 'Yeni Bloq')
+
 @section('content')
     <div class="page-content">
         <div class="container-fluid">
-
-            <!-- start page title -->
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Xəbərlər</h4>
-
+                        <h4 class="mb-sm-0">Yeni Bloq</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="{{ route('admin.blog.index') }}">Xəbərlər</a></li>
-                                <li class="breadcrumb-item active">Əlavə et</li>
+                                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Ana səhifə</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('back.pages.blog.index') }}">Bloqlar</a></li>
+                                <li class="breadcrumb-item active">Yeni</li>
                             </ol>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <!-- end page title -->
 
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Xəbər əlavə et</h4>
-                            <ul class="nav nav-pills nav-justified" role="tablist">
-                                <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#az" role="tab">
-                                        <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">AZ</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#en" role="tab">
-                                        <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                        <span class="d-none d-sm-block">EN</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#ru" role="tab">
-                                        <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                        <span class="d-none d-sm-block">RU</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <form class="needs-validation" method="POST" action="{{ route('admin.blog.store') }}"
-                                enctype="multipart/form-data">
+                            <form action="{{ route('back.pages.blog.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="row">
-                                    <div class="tab-content p-3 text-muted">
-                                        <div class="tab-pane active" id="az">
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Başlıq (Az)</label>
-                                                    <input type="text" name="title_az" value="{{ old('title_az') }}"
-                                                        class="form-control">
-                                                    @error('title_az')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Şəkil başlıq
-                                                        (Az)</label>
-                                                    <input type="text" name="image_title_az"
-                                                        value="{{ old('image_title_az') }}" class="form-control">
-                                                    @error('image_title_az')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Şəkil alt
-                                                        (Az)</label>
-                                                    <input type="text" name="image_alt_az"
-                                                        value="{{ old('image_alt_az') }}" class="form-control">
-                                                    @error('image_alt_az')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Meta title
-                                                        (Az)</label>
-                                                    <input type="text" name="meta_title_az"
-                                                        value="{{ old('meta_title_az') }}" class="form-control">
-                                                    @error('meta_title_az')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Meta description
-                                                        (Az)</label>
-                                                    <input type="text" name="meta_description_az"
-                                                        value="{{ old('meta_description_az') }}" class="form-control">
-                                                    @error('meta_description_az')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Mətn (Az)</label>
-                                                    <textarea name="description_az" class="summernote form-control">{{ old('description_az') }}</textarea>
-                                                    @error('description_az')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="en">
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Başlıq (En)</label>
-                                                    <input type="text" name="title_en" value="{{ old('title_en') }}"
-                                                        class="form-control">
-                                                    @error('title_en')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Şəkil başlıq
-                                                        (En)</label>
-                                                    <input type="text" name="image_title_en"
-                                                        value="{{ old('image_title_en') }}" class="form-control">
-                                                    @error('image_title_en')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Şəkil alt
-                                                        (En)</label>
-                                                    <input type="text" name="image_alt_en"
-                                                        value="{{ old('image_alt_en') }}" class="form-control">
-                                                    @error('image_alt_en')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Meta title
-                                                        (En)</label>
-                                                    <input type="text" name="meta_title_en"
-                                                        value="{{ old('meta_title_en') }}" class="form-control">
-                                                    @error('meta_title_en')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Meta description
-                                                        (En)</label>
-                                                    <input type="text" name="meta_description_en"
-                                                        value="{{ old('meta_description_en') }}" class="form-control">
-                                                    @error('meta_description_en')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Mətn (En)</label>
-                                                    <textarea name="description_en" class="summernote form-control">{{ old('description_en') }}</textarea>
-                                                    @error('description_en')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="ru">
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Başlıq (Ru)</label>
-                                                    <input type="text" name="title_ru" value="{{ old('title_ru') }}"
-                                                        class="form-control">
-                                                    @error('title_ru')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Şəkil başlıq
-                                                        (Ru)</label>
-                                                    <input type="text" name="image_title_ru"
-                                                        value="{{ old('image_title_ru') }}" class="form-control">
-                                                    @error('image_title_ru')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Şəkil alt
-                                                        (Ru)</label>
-                                                    <input type="text" name="image_alt_ru"
-                                                        value="{{ old('image_alt_ru') }}" class="form-control">
-                                                    @error('image_alt_ru')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Meta title
-                                                        (Ru)</label>
-                                                    <input type="text" name="meta_title_ru"
-                                                        value="{{ old('meta_title_ru') }}" class="form-control">
-                                                    @error('meta_title_ru')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Meta description
-                                                        (Ru)</label>
-                                                    <input type="text" name="meta_description_ru"
-                                                        value="{{ old('meta_description_ru') }}" class="form-control">
-                                                    @error('meta_description_ru')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3">
-                                                    <label for="validationCustom03" class="form-label">Mətn (Ru)</label>
-                                                    <textarea name="description_ru" class="summernote form-control">{{ old('description_ru') }}</textarea>
-                                                    @error('description_ru')
-                                                        <div class="invalid-feedback" style="display: block">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
 
+                                <!-- Şəkil Yükləmə Bölməsi -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Əsas Şəkil</label>
+                                            <input type="file" name="main_image" class="form-control @error('main_image') is-invalid @enderror" required>
+                                            @error('main_image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Alt Şəkillər</label>
+                                            <div id="bottom-images-container">
+                                                <div class="input-group mb-2">
+                                                    <input type="file" name="bottom_images[]" class="form-control">
+                                                    <button type="button" class="btn btn-danger" onclick="removeBottomImage(this)">Sil</button>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Tarix</label>
-                                            <input type="date" name="date" value="{{ now()->format('Y-m-d') }}"
-                                                class="form-control">
-                                            @error('date')
-                                                <div class="invalid-feedback" style="display: block;">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Əsas şəkil</label>
-                                            <input type="file" class="form-control" accept=".png,.jpg,.jpeg,.svg"
-                                                name="poster_image">
-                                            <div class="upload-container mt-3 row">
+                                            <div class="mt-2">
+                                                <button type="button" class="btn btn-warning" onclick="addBottomImage()">Yeni Şəkil Əlavə Et</button>
                                             </div>
-                                            @error('poster_image')
-                                                <div class="invalid-feedback" style="display: block">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Şəkil</label>
-                                            <input type="file" name="image" multiple class="form-control"
-                                                accept=".png,.svg,.jpg,.jpeg">
-                                            <div class="upload-container row mt-3"></div>
-                                            @error('image')
-                                                <div class="invalid-feedback" style="display: block">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-primary" type="submit">Təsdiqlə</button>
+
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#az" role="tab">
+                                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                            <span class="d-none d-sm-block">Azərbaycan</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#en" role="tab">
+                                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                            <span class="d-none d-sm-block">İngilis</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#ru" role="tab">
+                                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                            <span class="d-none d-sm-block">Rus</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content p-3">
+                                    <!-- Azərbaycan dili -->
+                                    <div class="tab-pane active" id="az" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label class="form-label">Başlıq</label>
+                                            <input type="text" name="title_az" id="title_az" class="form-control @error('title_az') is-invalid @enderror" required>
+                                            @error('title_az')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Slug</label>
+                                            <input type="text" name="slug_az" id="slug_az" class="form-control @error('slug_az') is-invalid @enderror">
+                                            @error('slug_az')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Əsas Şəkil ALT</label>
+                                            <input type="text" name="main_image_alt_az" class="form-control @error('main_image_alt_az') is-invalid @enderror" required>
+                                            @error('main_image_alt_az')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Alt Şəkillər ALT</label>
+                                            <div id="bottom-images-alt-container-az">
+                                                <input type="text" name="bottom_images_alt_az[]" class="form-control mb-2" placeholder="ALT mətni">
+                                            </div>
+                                            <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('az')">Yeni ALT Mətn Əlavə Et</button>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Mətn</label>
+                                            <textarea name="text_az" class="form-control @error('text_az') is-invalid @enderror" rows="5" required></textarea>
+                                            @error('text_az')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Məzmun 1</label>
+                                            <textarea name="description_1_az" class="form-control summernote"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Məzmun 2</label>
+                                            <textarea name="description_2_az" class="form-control summernote"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Meta Başlıq</label>
+                                            <input type="text" name="meta_title_az" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Meta Məzmun</label>
+                                            <textarea name="meta_description_az" class="form-control" rows="3"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- İngilis dili -->
+                                    <div class="tab-pane" id="en" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label class="form-label">Title</label>
+                                            <input type="text" name="title_en" id="title_en" class="form-control @error('title_en') is-invalid @enderror" required>
+                                            @error('title_en')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Slug</label>
+                                            <input type="text" name="slug_en" id="slug_en" class="form-control @error('slug_en') is-invalid @enderror">
+                                            @error('slug_en')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Main Image ALT</label>
+                                            <input type="text" name="main_image_alt_en" class="form-control @error('main_image_alt_en') is-invalid @enderror" required>
+                                            @error('main_image_alt_en')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Bottom Images ALT</label>
+                                            <div id="bottom-images-alt-container-en">
+                                                <input type="text" name="bottom_images_alt_en[]" class="form-control mb-2" placeholder="ALT text">
+                                            </div>
+                                            <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('en')">Add New ALT Text</button>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Text</label>
+                                            <textarea name="text_en" class="form-control @error('text_en') is-invalid @enderror" rows="5" required></textarea>
+                                            @error('text_en')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Description 1</label>
+                                            <textarea name="description_1_en" class="form-control summernote"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Description 2</label>
+                                            <textarea name="description_2_en" class="form-control summernote"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Meta Title</label>
+                                            <input type="text" name="meta_title_en" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Meta Description</label>
+                                            <textarea name="meta_description_en" class="form-control" rows="3"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Rus dili -->
+                                    <div class="tab-pane" id="ru" role="tabpanel">
+                                        <div class="mb-3">
+                                            <label class="form-label">Заголовок</label>
+                                            <input type="text" name="title_ru" id="title_ru" class="form-control @error('title_ru') is-invalid @enderror" required>
+                                            @error('title_ru')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Slug</label>
+                                            <input type="text" name="slug_ru" id="slug_ru" class="form-control @error('slug_ru') is-invalid @enderror">
+                                            @error('slug_ru')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">ALT главного изображения</label>
+                                            <input type="text" name="main_image_alt_ru" class="form-control @error('main_image_alt_ru') is-invalid @enderror" required>
+                                            @error('main_image_alt_ru')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">ALT нижних изображений</label>
+                                            <div id="bottom-images-alt-container-ru">
+                                                <input type="text" name="bottom_images_alt_ru[]" class="form-control mb-2" placeholder="ALT текст">
+                                            </div>
+                                            <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('ru')">Добавить новый ALT текст</button>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Текст</label>
+                                            <textarea name="text_ru" class="form-control @error('text_ru') is-invalid @enderror" rows="5" required></textarea>
+                                            @error('text_ru')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Описание 1</label>
+                                            <textarea name="description_1_ru" class="form-control summernote"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Описание 2</label>
+                                            <textarea name="description_2_ru" class="form-control summernote"></textarea>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Мета-заголовок</label>
+                                            <input type="text" name="meta_title_ru" class="form-control">
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label class="form-label">Мета-описание</label>
+                                            <textarea name="meta_description_ru" class="form-control" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary">Yadda saxla</button>
+                                        <a href="{{ route('back.pages.blog.index') }}" class="btn btn-secondary">Ləğv et</a>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <!-- end card -->
-                </div> <!-- end col -->
+                </div>
             </div>
-            <!-- end row -->
-
-        </div> <!-- container-fluid -->
+        </div>
     </div>
-    <!-- End Page-content -->
-@endsection
 
-@push('css')
+    @push('css')
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-    <link href="{{ asset('back/assets') }}/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
-@endpush
+    @endpush
 
-@push('js')
+    @push('js')
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-    <script src="{{ asset('back/assets') }}/libs/select2/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        function addBottomImage() {
+            const container = document.getElementById('bottom-images-container');
+            const wrapper = document.createElement('div');
+            wrapper.className = 'input-group mb-2';
+            
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.name = 'bottom_images[]';
+            input.className = 'form-control';
+            
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'btn btn-danger';
+            button.onclick = function() { removeBottomImage(this); };
+            button.textContent = 'Sil';
+            
+            wrapper.appendChild(input);
+            wrapper.appendChild(button);
+            container.appendChild(wrapper);
+        }
+
+        function removeBottomImage(button) {
+            const wrapper = button.closest('.input-group');
+            if (wrapper) {
+                wrapper.remove();
+            }
+        }
+
+        function addBottomImageAlt(lang) {
+            const container = document.getElementById(`bottom-images-alt-container-${lang}`);
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = `bottom_images_alt_${lang}[]`;
+            input.className = 'form-control mb-2';
+            input.placeholder = lang === 'ru' ? 'ALT текст' : (lang === 'en' ? 'ALT text' : 'ALT mətni');
+            container.appendChild(input);
+        }
+
         $(document).ready(function() {
-            $(".summernote").summernote();
-            $('.dropdown-toggle').dropdown();
+            $('.summernote').summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+            // Sweet Alert for form submission
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+                let form = this;
+                
+                Swal.fire({
+                    title: 'Əminsiniz?',
+                    text: 'Bu məlumatları yadda saxlamaq istədiyinizə əminsiniz?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Bəli',
+                    cancelButtonText: 'Xeyr'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+
+        // Slug generation for each language
+        document.addEventListener('DOMContentLoaded', function() {
+            const slugify = (text) => {
+                let trMap = {
+                    'çÇ':'c',
+                    'ğĞ':'g',
+                    'şŞ':'s',
+                    'üÜ':'u',
+                    'ıİ':'i',
+                    'öÖ':'o',
+                    'əƏ':'e'
+                };
+                for(let key in trMap) {
+                    text = text.replace(new RegExp('['+key+']','g'), trMap[key]);
+                }
+                return text
+                    .toLowerCase()
+                    .replace(/[^-a-zA-Z0-9\s]+/ig, '') // Remove non-alphanumeric chars
+                    .replace(/\s/gi, "-") // Convert spaces to dashes
+                    .replace(/-+/g, "-") // Remove consecutive dashes
+                    .trim();
+            };
+
+            // For each language
+            ['az', 'en', 'ru'].forEach(lang => {
+                const titleInput = document.getElementById(`title_${lang}`);
+                const slugInput = document.getElementById(`slug_${lang}`);
+                
+                titleInput.addEventListener('keyup', function() {
+                    if (!slugInput.value || slugInput.value === slugify(this.value)) {
+                        slugInput.value = slugify(this.value);
+                    }
+                });
+
+                // Allow manual slug editing
+                slugInput.addEventListener('keyup', function() {
+                    this.value = slugify(this.value);
+                });
+            });
         });
     </script>
-    <!-- //Summernote JS - CDN Link -->
-    <script src="{{ asset('back/assets/js/pages/file-upload.js') }}"></script>
-    <script>
-        $('select').select2();
-    </script>
-@endpush
+    @endpush
+@endsection

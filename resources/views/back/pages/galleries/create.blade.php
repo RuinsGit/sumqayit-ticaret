@@ -305,9 +305,9 @@
                 }
                 return text
                     .toLowerCase()
-                    .replace(/[^-a-zA-Z0-9\s]+/ig, '') // Remove non-alphanumeric chars
-                    .replace(/\s/gi, "-") // Convert spaces to dashes
-                    .replace(/-+/g, "-") // Remove consecutive dashes
+                    .replace(/[^-a-zA-Z0-9\s]+/ig, '') 
+                    .replace(/\s/gi, "-") 
+                    .replace(/-+/g, "-") 
                     .trim();
             };
 

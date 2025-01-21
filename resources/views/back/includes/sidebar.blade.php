@@ -133,6 +133,13 @@
                        
                     </ul>
 
+                    <li>
+                        <a href="{{ route('back.pages.blog.index') }}">
+                            <i class="ri-book-line"></i>
+                            <span>Blog</span>
+                        </a>
+                    </li>
+
                         
 
 
