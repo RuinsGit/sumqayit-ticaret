@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('home_abouts', function (Blueprint $table) {
             $table->id();
             
-            // Title fields for different languages
+            
             $table->string('title1_az');
             $table->string('title1_en');
             $table->string('title1_ru');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('title2_en');
             $table->string('title2_ru');
 
-            // Special titles for different languages
+            
             $table->string('special_title1_az');
             $table->string('special_title1_en');
             $table->string('special_title1_ru');
@@ -33,8 +33,8 @@ return new class extends Migration
             $table->string('special_title3_en');
             $table->string('special_title3_ru');
 
-            // Images and their ALT tags for different languages
-            $table->json('images'); // Store image URLs
+            
+            $table->json('images'); 
             $table->json('images_alt_az')->nullable(); 
             $table->json('images_alt_en')->nullable(); 
             $table->json('images_alt_ru')->nullable(); 

@@ -10,7 +10,7 @@ return new class extends Migration
 {
     Schema::create('translation_manages', function (Blueprint $table) {
         $table->id();
-        $table->string('key')->unique(); // Bu satırın var olduğundan emin olun
+        $table->string('key')->unique(); 
         $table->text('value_az');
         $table->text('value_en')->nullable();
         $table->text('value_ru')->nullable();

@@ -14,34 +14,28 @@ return new class extends Migration
         Schema::create('gallery_videos', function (Blueprint $table) {
             $table->id();
             
-            // Titles
             $table->string('title_az');
             $table->string('title_en');
             $table->string('title_ru');
             
-            // Slugs
             $table->string('slug_az')->unique();
             $table->string('slug_en')->unique();
             $table->string('slug_ru')->unique();
             
-            // Main Video
             $table->string('main_video');
             $table->string('main_video_thumbnail');
             $table->string('main_video_alt_az');
             $table->string('main_video_alt_en');
             $table->string('main_video_alt_ru');
             
-            // Bottom Video
             $table->string('bottom_video');
             $table->string('bottom_video_thumbnail');
             $table->string('bottom_video_alt_az');
             $table->string('bottom_video_alt_en');
             $table->string('bottom_video_alt_ru');
             
-            // Multiple Videos - JSON array
             $table->json('multiple_videos')->nullable();
             
-            // Meta Fields
             $table->string('meta_title_az')->nullable();
             $table->string('meta_title_en')->nullable();
             $table->string('meta_title_ru')->nullable();

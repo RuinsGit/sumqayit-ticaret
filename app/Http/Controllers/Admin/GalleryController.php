@@ -185,9 +185,7 @@ class GalleryController extends Controller
 
             $data = $request->except(['main_image', 'bottom_image', 'bottom_images', 'existing_images', 'existing_images_alt_az', 'existing_images_alt_en', 'existing_images_alt_ru']);
 
-            // Ana görsel güncelleme
             if ($request->hasFile('main_image')) {
-                // Eski görseli sil
                 if ($gallery->main_image) {
                     Storage::disk('public')->delete($gallery->main_image);
                 }
@@ -211,9 +209,9 @@ class GalleryController extends Controller
                 }
             }
 
-            // Alt görsel güncelleme
+           
             if ($request->hasFile('bottom_image')) {
-                // Eski görseli sil
+                
                 if ($gallery->bottom_image) {
                     Storage::disk('public')->delete($gallery->bottom_image);
                 }
@@ -237,10 +235,10 @@ class GalleryController extends Controller
                 }
             }
 
-            // Mevcut çoklu görselleri güncelle
+            
             $multipleImages = [];
             
-            // Eğer mevcut resimler varsa
+            
             if ($request->has('existing_images')) {
                 $existingImages = $request->existing_images;
                 $existingImagesAltAz = $request->existing_images_alt_az;
@@ -257,19 +255,19 @@ class GalleryController extends Controller
                 }
             }
 
-            // Silinen resimleri temizle
+            
             if ($gallery->multiple_images) {
                 $oldImages = collect($gallery->multiple_images)->pluck('image')->toArray();
                 $keepImages = $request->has('existing_images') ? $request->existing_images : [];
                 
-                // Silinen resimleri bul ve sil
+                
                 $deletedImages = array_diff($oldImages, $keepImages);
                 foreach ($deletedImages as $deletedImage) {
                     Storage::disk('public')->delete($deletedImage);
                 }
             }
 
-            // Yeni çoklu görseller ekleme
+          
             if ($request->hasFile('new_images')) {
                 foreach ($request->file('new_images') as $key => $file) {
                     $destinationPath = public_path('storage/gallery/multiple');
@@ -314,7 +312,7 @@ class GalleryController extends Controller
     public function destroy(Gallery $gallery)
     {
         try {
-            // Tüm görselleri sil
+            
             if ($gallery->main_image) {
                 Storage::disk('public')->delete($gallery->main_image);
             }
