@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\TranslationManageController;
 use App\Http\Controllers\Api\LogoApiController;
 use App\Http\Controllers\Api\SeoController;
 use App\Http\Controllers\Api\GalleryVideoController;
+use App\Http\Controllers\Api\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,37 +19,41 @@ use App\Http\Controllers\Api\GalleryVideoController;
 |
 */
 
-
-
+// Logo Routes
 Route::get('/logos', [LogoApiController::class, 'index']);
 Route::get('/logos/{id}', [LogoApiController::class, 'show']);
 Route::get('/logos/key/{key}', [LogoApiController::class, 'getByKey']);
 Route::get('/logos/group/{group}', [LogoApiController::class, 'getByGroup']);
 
-
+// Translation Routes
 Route::get('translations', [TranslationManageController::class, 'index']);
 Route::get('translations/{id}', [TranslationManageController::class, 'show']);
 Route::get('translations/key/{key}', [TranslationManageController::class, 'getByKey']);
 Route::get('translations/group/{group}', [TranslationManageController::class, 'getByGroup']);
 
-
-
+// SEO Routes
 Route::prefix('seo')->group(function () {
-    Route::get('/', [App\Http\Controllers\Api\SeoController::class, 'index']);
-    Route::get('/{key}', [App\Http\Controllers\Api\SeoController::class, 'show']);
-    Route::post('/', [App\Http\Controllers\Api\SeoController::class, 'store']);
-    Route::put('/{id}', [App\Http\Controllers\Api\SeoController::class, 'update']);
-    Route::delete('/{id}', [App\Http\Controllers\Api\SeoController::class, 'destroy']);
+    Route::get('/', [SeoController::class, 'index']);
+    Route::get('/{key}', [SeoController::class, 'show']);
+    Route::post('/', [SeoController::class, 'store']);
+    Route::put('/{id}', [SeoController::class, 'update']);
+    Route::delete('/{id}', [SeoController::class, 'destroy']);
 });
-// Home Card Routes
-Route::get('/home-cards', [HomeCardController::class, 'index']);
-Route::get('/home-cards/{id}', [HomeCardController::class, 'show']);
 
 // Gallery Video Routes
 Route::prefix('gallery-videos')->group(function () {
     Route::get('/', [GalleryVideoController::class, 'index']);
     Route::get('/latest/{limit?}', [GalleryVideoController::class, 'getLatest']);
     Route::get('/paginated/{perPage?}', [GalleryVideoController::class, 'getPaginated']);
-    Route::get('/{id}', [GalleryVideoController::class, 'show']);
     Route::get('/slug/{lang}/{slug}', [GalleryVideoController::class, 'getBySlug']);
+    Route::get('/{id}', [GalleryVideoController::class, 'show']);
+});
+
+// Gallery Image Routes
+Route::prefix('gallery-images')->group(function () {
+    Route::get('/', [GalleryController::class, 'index']);
+    Route::get('/latest/{limit?}', [GalleryController::class, 'getLatest']);
+    Route::get('/paginated/{perPage?}', [GalleryController::class, 'getPaginated']);
+    Route::get('/slug/{lang}/{slug}', [GalleryController::class, 'getBySlug']);
+    Route::get('/{id}', [GalleryController::class, 'show']);
 });

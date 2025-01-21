@@ -9,14 +9,10 @@ use Illuminate\Http\Request;
 
 class GalleryVideoController extends Controller
 {
-    /**
-     * Tüm video galerilerini listele
-     */
     public function index()
     {
         try {
             $galleryVideos = GalleryVideo::latest()->get();
-            
             return response()->json([
                 'success' => true,
                 'data' => GalleryVideoResource::collection($galleryVideos)
@@ -29,14 +25,10 @@ class GalleryVideoController extends Controller
         }
     }
 
-    /**
-     * Belirli bir video galeriyi göster
-     */
     public function show($id)
     {
         try {
             $galleryVideo = GalleryVideo::findOrFail($id);
-            
             return response()->json([
                 'success' => true,
                 'data' => new GalleryVideoResource($galleryVideo)
@@ -49,14 +41,10 @@ class GalleryVideoController extends Controller
         }
     }
 
-    /**
-     * Slug'a göre video galeriyi göster
-     */
     public function getBySlug($lang, $slug)
     {
         try {
             $galleryVideo = GalleryVideo::where('slug_' . $lang, $slug)->firstOrFail();
-            
             return response()->json([
                 'success' => true,
                 'data' => new GalleryVideoResource($galleryVideo)
@@ -69,16 +57,12 @@ class GalleryVideoController extends Controller
         }
     }
 
-    /**
-     * Son eklenen video galerileri getir
-     */
     public function getLatest($limit = 6)
     {
         try {
             $galleryVideos = GalleryVideo::latest()
                 ->take($limit)
                 ->get();
-            
             return response()->json([
                 'success' => true,
                 'data' => GalleryVideoResource::collection($galleryVideos)
@@ -91,15 +75,11 @@ class GalleryVideoController extends Controller
         }
     }
 
-    /**
-     * Sayfalı video galerileri getir
-     */
     public function getPaginated($perPage = 10)
     {
         try {
             $galleryVideos = GalleryVideo::latest()
                 ->paginate($perPage);
-            
             return response()->json([
                 'success' => true,
                 'data' => GalleryVideoResource::collection($galleryVideos)
