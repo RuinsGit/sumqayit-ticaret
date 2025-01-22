@@ -7,7 +7,7 @@ use App\Http\Resources\StoreHeroResource;
 use App\Models\StoreHero;
 use Illuminate\Http\Request;
 
-class StoreHeroController extends Controller
+class StoreHeroApiController extends Controller
 {
     public function index()
     {
