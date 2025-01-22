@@ -25,24 +25,24 @@ class StoreResource extends JsonResource
             'bottom_image_alt' => $this->bottom_image_alt,
             'contact' => [
                 [
-                    'value_number' => $this->number,
-                    'image_number' => $this->number_image ? asset($this->number_image) : null,
-                    'id' => $this->id
+                    'value' => $this->number,
+                    'image' => $this->number_image ? asset($this->number_image) : null,
+                    'id' => 1
                 ],
                 [
-                    'value_email' => $this->email,
-                    'image_email' => $this->email_image ? asset($this->email_image) : null,
-                    'id' => $this->id + 1
+                    'value' => $this->email,
+                    'image' => $this->email_image ? asset($this->email_image) : null,
+                    'id' => 2
                 ],
                 [
-                    'value_link' => $this->link,
-                    'image_link' => $this->link_image ? asset($this->link_image) : null,
-                    'id' => $this->id + 2
+                    'value' => $this->link,
+                    'image' => $this->link_image ? asset($this->link_image) : null,
+                    'id' => 3
                 ],
                 [
-                    'value_working_hours' => $this->working_hours_az,
-                    'image_working_hours' => $this->working_hours_image ? asset($this->working_hours_image) : null,
-                    'id' => $this->id + 3
+                    'value' => $this->working_hours_az,
+                    'image' => $this->working_hours_image ? asset($this->working_hours_image) : null,
+                    'id' => 4
                 ]
             ],
             'status' => (bool) $this->status,
