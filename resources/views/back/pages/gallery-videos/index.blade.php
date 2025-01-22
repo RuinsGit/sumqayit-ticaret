@@ -59,7 +59,7 @@
                                                 <td class="text-center">{{ $loop->iteration }}</td>
                                                 <td class="text-center">
                                                     @if($galleryVideo->main_video_thumbnail)
-                                                        <img src="{{ asset('storage/' . $galleryVideo->main_video_thumbnail) }}" 
+                                                        <img src="{{ asset($galleryVideo->main_video_thumbnail) }}" 
                                                              alt="{{ $galleryVideo->main_video_alt_az }}"
                                                              class="img-thumbnail"
                                                              style="max-height: 80px;">
@@ -72,7 +72,7 @@
                                                 </td>
                                                 <td class="text-center">
                                                     @if($galleryVideo->bottom_video_thumbnail)
-                                                        <img src="{{ asset('storage/' . $galleryVideo->bottom_video_thumbnail) }}" 
+                                                        <img src="{{ asset($galleryVideo->bottom_video_thumbnail) }}" 
                                                              alt="{{ $galleryVideo->bottom_video_alt_az }}"
                                                              class="img-thumbnail"
                                                              style="max-height: 80px;">
@@ -84,7 +84,7 @@
                                                     @if($galleryVideo->multiple_videos)
                                                         <div class="avatar-group">
                                                             @foreach(array_slice(is_string($galleryVideo->multiple_videos) ? json_decode($galleryVideo->multiple_videos, true) : $galleryVideo->multiple_videos, 0, 3) as $video)
-                                                                <img src="{{ asset('storage/' . $video['thumbnail']) }}" 
+                                                                <img src="{{ asset($video['thumbnail']) }}" 
                                                                      alt="{{ $video['alt_az'] }}"
                                                                      class="img-thumbnail"
                                                                      style="max-height: 50px; margin-right: 5px;">

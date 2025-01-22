@@ -40,21 +40,21 @@
                                             @if($galleryVideo->main_video)
                                             <div class="mt-2">
                                                 <video width="200" controls>
-                                                    <source src="{{ asset('storage/' . $galleryVideo->main_video) }}" type="video/mp4">
+                                                    <source src="{{ asset($galleryVideo->main_video) }}" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>
                                             @endif
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Əsas Video Thumbnail</label>
+                                            <label class="form-label">Əsas Video Thumbnail (WebP formatına çevriləcək)</label>
                                             <input type="file" name="main_video_thumbnail" class="form-control @error('main_video_thumbnail') is-invalid @enderror" accept="image/*">
                                             @error('main_video_thumbnail')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                             @if($galleryVideo->main_video_thumbnail)
                                             <div class="mt-2">
-                                                <img src="{{ asset('storage/' . $galleryVideo->main_video_thumbnail) }}" alt="Main Video Thumbnail" class="img-thumbnail" style="max-width: 200px;">
+                                                <img src="{{ asset($galleryVideo->main_video_thumbnail) }}" alt="Main Video Thumbnail" class="img-thumbnail" style="max-width: 200px;">
                                             </div>
                                             @endif
                                         </div>
@@ -69,21 +69,21 @@
                                             @if($galleryVideo->bottom_video)
                                             <div class="mt-2">
                                                 <video width="200" controls>
-                                                    <source src="{{ asset('storage/' . $galleryVideo->bottom_video) }}" type="video/mp4">
+                                                    <source src="{{ asset($galleryVideo->bottom_video) }}" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
                                             </div>
                                             @endif
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label">Alt Video Thumbnail</label>
+                                            <label class="form-label">Alt Video Thumbnail (WebP formatına çevriləcək)</label>
                                             <input type="file" name="bottom_video_thumbnail" class="form-control @error('bottom_video_thumbnail') is-invalid @enderror" accept="image/*">
                                             @error('bottom_video_thumbnail')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                             @if($galleryVideo->bottom_video_thumbnail)
                                             <div class="mt-2">
-                                                <img src="{{ asset('storage/' . $galleryVideo->bottom_video_thumbnail) }}" alt="Bottom Video Thumbnail" class="img-thumbnail" style="max-width: 200px;">
+                                                <img src="{{ asset($galleryVideo->bottom_video_thumbnail) }}" alt="Bottom Video Thumbnail" class="img-thumbnail" style="max-width: 200px;">
                                             </div>
                                             @endif
                                         </div>
@@ -100,12 +100,12 @@
                                                     <div class="mb-2 position-relative">
                                                         <div class="mb-2">
                                                             <video width="200" controls>
-                                                                <source src="{{ asset('storage/' . $video['video']) }}" type="video/mp4">
+                                                                <source src="{{ asset($video['video']) }}" type="video/mp4">
                                                                 Your browser does not support the video tag.
                                                             </video>
                                                         </div>
                                                         <div class="mb-2">
-                                                            <img src="{{ asset('storage/' . $video['thumbnail']) }}" alt="Video Thumbnail" class="img-thumbnail" style="max-width: 200px;">
+                                                            <img src="{{ asset($video['thumbnail']) }}" alt="Video Thumbnail" class="img-thumbnail" style="max-width: 200px;">
                                                         </div>
                                                         <div class="row mt-2">
                                                             <div class="col-md-4">
