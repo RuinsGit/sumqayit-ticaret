@@ -152,8 +152,22 @@
                             <span>Mağazalar</span>
                         </a>
                         <ul class="sub-menu" aria-expanded="false">
-                            <li><a href="{{ route('back.pages.store-type.index') }}">Mağaza Növləri</a></li>
-                            <li><a href="{{ route('back.pages.store.index') }}">Mağazalar</a></li>
+                        <li>
+                        <a href="{{ route('back.pages.store-type.index') }}">
+                            <i class=" ri-brackets-line"></i>
+                            <span>Mağaza novleri</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('back.pages.store.index') }}">
+                            <i class="ri-store-3-line"></i>
+                            <span>Mağazalar</span>
+                        </a>
+                    </li>
+
+                        
+                            
                         </ul>
                     </li>
 

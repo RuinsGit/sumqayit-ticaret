@@ -54,7 +54,7 @@
                                             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                                             @if($store->image)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/' . $store->image) }}" alt="" style="max-height: 100px;">
+                                                    <img src="{{ asset($store->image) }}" alt="" class="img-fluid" style="max-height: 100px;">
                                                 </div>
                                             @endif
                                             @error('image')
@@ -68,7 +68,7 @@
                                             <input type="file" name="bottom_image" class="form-control @error('bottom_image') is-invalid @enderror">
                                             @if($store->bottom_image)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/' . $store->bottom_image) }}" alt="" style="max-height: 100px;">
+                                                    <img src="{{ asset($store->bottom_image) }}" alt="" class="img-fluid" style="max-height: 100px;">
                                                 </div>
                                             @endif
                                             @error('bottom_image')
@@ -82,7 +82,7 @@
                                             <input type="file" name="working_hours_image" class="form-control @error('working_hours_image') is-invalid @enderror">
                                             @if($store->working_hours_image)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/' . $store->working_hours_image) }}" alt="" style="max-height: 50px;">
+                                                    <img src="{{ asset($store->working_hours_image) }}" alt="" class="img-fluid" style="max-height: 50px;">
                                                 </div>
                                             @endif
                                             @error('working_hours_image')
@@ -100,7 +100,7 @@
                                             <input type="file" name="number_image" class="form-control @error('number_image') is-invalid @enderror">
                                             @if($store->number_image)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/' . $store->number_image) }}" alt="" style="max-height: 50px;">
+                                                    <img src="{{ asset($store->number_image) }}" alt="" class="img-fluid" style="max-height: 50px;">
                                                 </div>
                                             @endif
                                             @error('number_image')
@@ -114,7 +114,7 @@
                                             <input type="file" name="email_image" class="form-control @error('email_image') is-invalid @enderror">
                                             @if($store->email_image)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/' . $store->email_image) }}" alt="" style="max-height: 50px;">
+                                                    <img src="{{ asset($store->email_image) }}" alt="" class="img-fluid" style="max-height: 50px;">
                                                 </div>
                                             @endif
                                             @error('email_image')
@@ -128,7 +128,7 @@
                                             <input type="file" name="link_image" class="form-control @error('link_image') is-invalid @enderror">
                                             @if($store->link_image)
                                                 <div class="mt-2">
-                                                    <img src="{{ asset('storage/' . $store->link_image) }}" alt="" style="max-height: 50px;">
+                                                    <img src="{{ asset($store->link_image) }}" alt="" class="img-fluid" style="max-height: 50px;">
                                                 </div>
                                             @endif
                                             @error('link_image')

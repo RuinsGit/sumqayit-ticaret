@@ -43,4 +43,25 @@ class Store extends Model
     {
         return $this->belongsTo(StoreType::class);
     }
+
+    public function getDescriptionAttribute()
+    {
+        return $this->{'description_' . app()->getLocale()};
+    }
+
+    public function getWorkingHoursAttribute()
+    {
+        return $this->{'working_hours_' . app()->getLocale()};
+    }
+
+    public function getImageAltAttribute()
+    {
+        return $this->{'image_alt_' . app()->getLocale()};
+    }
+
+    public function getBottomImageAltAttribute()
+    {
+        return $this->{'bottom_image_alt_' . app()->getLocale()};
+    }
+    
 }

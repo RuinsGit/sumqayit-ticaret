@@ -20,6 +20,11 @@ class StoreType extends Model
         'status' => 'boolean'
     ];
 
+    public function getNameAttribute()
+    {
+        return $this->{'name_' . app()->getLocale()};
+    }
+
     public function stores()
     {
         return $this->hasMany(Store::class);

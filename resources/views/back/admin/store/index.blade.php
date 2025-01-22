@@ -36,6 +36,7 @@
                                             <th>ID</th>
                                             <th>Növ</th>
                                             <th>Şəkil</th>
+                                            <th>İkonlar</th>
                                             <th>Email</th>
                                             <th>Nömrə</th>
                                             <th>Status</th>
@@ -49,10 +50,26 @@
                                                 <td>{{ $store->storeType->name_az }}</td>
                                                 <td>
                                                     @if($store->image)
-                                                        <img src="{{ asset('storage/' . $store->image) }}" alt="" style="height: 50px;">
+                                                        <img src="{{ asset($store->image) }}" alt="" style="height: 50px;">
                                                     @else
                                                         <span class="badge bg-secondary">Şəkil yoxdur</span>
                                                     @endif
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        @if($store->working_hours_image)
+                                                            <img src="{{ asset($store->working_hours_image) }}" alt="İş saatları" title="İş saatları" style="height: 30px;">
+                                                        @endif
+                                                        @if($store->number_image)
+                                                            <img src="{{ asset($store->number_image) }}" alt="Nömrə" title="Nömrə" style="height: 30px;">
+                                                        @endif
+                                                        @if($store->email_image)
+                                                            <img src="{{ asset($store->email_image) }}" alt="Email" title="Email" style="height: 30px;">
+                                                        @endif
+                                                        @if($store->link_image)
+                                                            <img src="{{ asset($store->link_image) }}" alt="Link" title="Link" style="height: 30px;">
+                                                        @endif
+                                                    </div>
                                                 </td>
                                                 <td>{{ $store->email }}</td>
                                                 <td>{{ $store->number }}</td>
@@ -75,7 +92,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="7" class="text-center">Heç bir məlumat tapılmadı.</td>
+                                                <td colspan="8" class="text-center">Heç bir məlumat tapılmadı.</td>
                                             </tr>
                                         @endforelse
                                     </tbody>

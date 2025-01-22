@@ -8,6 +8,8 @@ use App\Http\Controllers\Api\SeoController;
 use App\Http\Controllers\Api\GalleryVideoController;
 use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\StoreApiController;
+use App\Http\Controllers\Api\StoreTypeApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,4 +68,22 @@ Route::prefix('gallery-images')->group(function () {
     Route::get('/paginated/{perPage?}', [GalleryController::class, 'getPaginated']);
     Route::get('/slug/{lang}/{slug}', [GalleryController::class, 'getBySlug']);
     Route::get('/{id}', [GalleryController::class, 'show']);
+});
+
+// Store Type Routes
+Route::prefix('store-types')->group(function () {
+    Route::get('/', [StoreTypeApiController::class, 'index']);
+    Route::get('/{id}', [StoreTypeApiController::class, 'show']);
+    Route::post('/', [StoreTypeApiController::class, 'store']);
+    Route::put('/{id}', [StoreTypeApiController::class, 'update']);
+    Route::delete('/{id}', [StoreTypeApiController::class, 'destroy']);
+});
+
+// Store Routes
+Route::prefix('stores')->group(function () {
+    Route::get('/', [StoreApiController::class, 'index']);
+    Route::get('/{id}', [StoreApiController::class, 'show']);
+    Route::post('/', [StoreApiController::class, 'store']);
+    Route::put('/{id}', [StoreApiController::class, 'update']);
+    Route::delete('/{id}', [StoreApiController::class, 'destroy']);
 });
