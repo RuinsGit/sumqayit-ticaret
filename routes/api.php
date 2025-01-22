@@ -10,7 +10,7 @@ use App\Http\Controllers\Api\GalleryController;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\StoreApiController;
 use App\Http\Controllers\Api\StoreTypeApiController;
-
+use App\Http\Controllers\Api\ContactApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -86,4 +86,13 @@ Route::prefix('stores')->group(function () {
     Route::post('/', [StoreApiController::class, 'store']);
     Route::put('/{id}', [StoreApiController::class, 'update']);
     Route::delete('/{id}', [StoreApiController::class, 'destroy']);
+});
+
+// Contact Routes
+Route::prefix('contact')->group(function () {
+    Route::get('/', [ContactApiController::class, 'index']);
+    Route::get('/{id}', [ContactApiController::class, 'show']);
+    Route::get('/{id}/edit', [ContactApiController::class, 'edit']);
+    Route::put('/{id}', [ContactApiController::class, 'update']);
+    Route::delete('/{id}', [ContactApiController::class, 'destroy']);
 });

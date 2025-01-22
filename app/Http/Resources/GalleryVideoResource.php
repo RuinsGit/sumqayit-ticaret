@@ -23,8 +23,8 @@ class GalleryVideoResource extends JsonResource
             foreach ($multipleVideos as $index => $video) {
                 $videos[] = [
                     'id' => $index + 1,
-                    'video' => asset('storage/' . $video['video']),
-                    'thumbnail' => $video['thumbnail'] ? asset('storage/' . $video['thumbnail']) : null,
+                    'video' => asset('./' . $video['video']),
+                    'thumbnail' => $video['thumbnail'] ? asset('./' . $video['thumbnail']) : null,
                     'video_alt' => $video['alt_' . app()->getLocale()] ?? null
                 ];
             }
@@ -38,11 +38,11 @@ class GalleryVideoResource extends JsonResource
                 'en' => $this->slug_en,
                 'ru' => $this->slug_ru
             ],
-            'main_video' => $this->main_video ? asset('storage/' . $this->main_video) : null,
-            'main_video_thumbnail' => $this->main_video_thumbnail ? asset('storage/' . $this->main_video_thumbnail) : null,
+            'main_video' => $this->main_video ? asset('./' . $this->main_video) : null,
+            'main_video_thumbnail' => $this->main_video_thumbnail ? asset('./' . $this->main_video_thumbnail) : null,
             'main_video_alt' => $this->{'main_video_alt_' . app()->getLocale()},
-            'bottom_video' => $this->bottom_video ? asset('storage/' . $this->bottom_video) : null,
-            'bottom_video_thumbnail' => $this->bottom_video_thumbnail ? asset('storage/' . $this->bottom_video_thumbnail) : null,
+            'bottom_video' => $this->bottom_video ? asset('./' . $this->bottom_video) : null,
+            'bottom_video_thumbnail' => $this->bottom_video_thumbnail ? asset('./' . $this->bottom_video_thumbnail) : null,
             'bottom_video_alt' => $this->{'bottom_video_alt_' . app()->getLocale()},
             'videos' => $videos,
             'meta_title' => $this->{'meta_title_' . app()->getLocale()},
