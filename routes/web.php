@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\GalleryVideoController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\StoreTypeController;
+use App\Http\Controllers\Admin\StoreController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -144,6 +146,12 @@ Route::prefix('admin')->group(function () {
              Route::get('blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
              Route::put('blog/{id}', [BlogController::class, 'update'])->name('blog.update');
              Route::delete('blog/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+
+            // Store Types
+            Route::resource('store-type', StoreTypeController::class);
+            
+            // Stores
+            Route::resource('store', StoreController::class);
 
         });
     });
