@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HomeCard extends Model
+class StoreHero extends Model
 {
+    protected $table = 'store_hero';
     protected $fillable = [
         'image',
         'image_alt_az',

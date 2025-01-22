@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\StoreApiController;
 use App\Http\Controllers\Api\StoreTypeApiController;
 use App\Http\Controllers\Api\ContactApiController;
+use App\Http\Controllers\Api\StoreHeroApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -95,4 +96,10 @@ Route::prefix('contact')->group(function () {
     Route::get('/{id}/edit', [ContactApiController::class, 'edit']);
     Route::put('/{id}', [ContactApiController::class, 'update']);
     Route::delete('/{id}', [ContactApiController::class, 'destroy']);
+});
+
+// Store Hero Routes
+Route::prefix('store-hero')->group(function () {
+    Route::get('/', [StoreHeroApiController::class, 'index']);
+    Route::get('/{id}', [StoreHeroApiController::class, 'show']);
 });

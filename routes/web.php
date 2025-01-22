@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\GalleryVideoController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\StoreTypeController;
 use App\Http\Controllers\Admin\StoreController;
+use App\Http\Controllers\Admin\StoreHeroController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -152,6 +153,9 @@ Route::prefix('admin')->group(function () {
             
             // Stores
             Route::resource('store', StoreController::class);
+
+            // Store Hero
+            Route::resource('store-hero', StoreHeroController::class);
 
         });
     });

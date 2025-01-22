@@ -166,6 +166,13 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="{{ route('back.pages.store-hero.index') }}">
+                            <i class="ri-store-3-line"></i>
+                            <span>Mağazalar Hero</span>
+                        </a>
+                    </li>   
+
                         
                             
                         </ul>
