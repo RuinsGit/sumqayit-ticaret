@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\HomeAboutApiController;
 use App\Http\Controllers\Api\HomeCardController;
 use App\Http\Controllers\Api\ContactRentApiController;
 use App\Http\Controllers\Api\ContactfooterApiController;
+use App\Http\Controllers\Api\ServiceApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -167,3 +168,5 @@ Route::prefix('contact-footer')->group(function () {
     Route::put('/{id}', [ContactfooterApiController::class, 'update']);
     Route::delete('/{id}', [ContactfooterApiController::class, 'destroy']);
 });
+
+Route::apiResource('services', ServiceApiController::class);
