@@ -6,13 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Artisan;
 
 class SocialMediaController extends Controller
 {
     public function index()
     {
-        Artisan::call('migrate');
+        
         $socials = SocialMedia::orderBy('order')->get();
         return view('back.admin.social.index', compact('socials'));
     }

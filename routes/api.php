@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\ContactApiController;
 use App\Http\Controllers\Api\StoreHeroApiController;
 use App\Http\Controllers\Api\SocialMediaApiController;
 use App\Http\Controllers\Api\SocialshareApiController;
+use App\Http\Controllers\Api\SocialfooterApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -123,4 +124,13 @@ Route::prefix('socialshares')->group(function () {
     Route::post('/', [SocialshareApiController::class, 'store']);
     Route::put('/{id}', [SocialshareApiController::class, 'update']);
     Route::delete('/{id}', [SocialshareApiController::class, 'destroy']);
+});
+
+// Social Footer Routes
+Route::prefix('social-footer')->group(function () {
+    Route::get('/', [SocialfooterApiController::class, 'index']);
+    Route::get('/{id}', [SocialfooterApiController::class, 'show']);
+    Route::post('/', [SocialfooterApiController::class, 'store']);
+    Route::put('/{id}', [SocialfooterApiController::class, 'update']);
+    Route::delete('/{id}', [SocialfooterApiController::class, 'destroy']);
 });

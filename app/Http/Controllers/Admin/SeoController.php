@@ -5,14 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Seo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 
 
 class SeoController extends Controller
 {
     public function index()
     {
-        Artisan::call('migrate');
         $seos = Seo::all();
         return view('back.admin.seo.index', compact('seos'));
     }

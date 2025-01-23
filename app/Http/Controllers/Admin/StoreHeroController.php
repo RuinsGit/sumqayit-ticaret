@@ -6,14 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\StoreHero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Artisan;
 
 
 class StoreHeroController extends Controller
 {
     public function index()
     {
-        Artisan::call('migrate');
         $storeHero = StoreHero::all();
         $storeHeroExists = StoreHero::count() >= 1;
         return view('back.admin.store-hero.index', compact('storeHero', 'storeHeroExists'));

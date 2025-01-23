@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Socialshare;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 
 class SocialshareController extends Controller
 {
@@ -13,7 +12,6 @@ class SocialshareController extends Controller
 
     public function __construct()
     {   
-        Artisan::call('migrate');
         $this->destinationPath = public_path('uploads');
         
         // Uploads klasörü yoksa oluştur

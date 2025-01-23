@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\StoreType;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 
 class StoreTypeController extends Controller
 {
@@ -14,7 +13,6 @@ class StoreTypeController extends Controller
      */
     public function index()
     {
-        Artisan::call('migrate');
         $storeTypes = StoreType::latest()->get();
         return view('back.admin.store-type.index', compact('storeTypes'));
     }

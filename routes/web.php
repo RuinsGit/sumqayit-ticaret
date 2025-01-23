@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\StoreHeroController;
 use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\SocialshareController;
+use App\Http\Controllers\Admin\SocialfooterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -176,6 +177,16 @@ Route::prefix('admin')->group(function () {
             Route::get('socialshare/{id}/edit', [SocialshareController::class, 'edit'])->name('socialshare.edit');
             Route::put('socialshare/{id}', [SocialshareController::class, 'update'])->name('socialshare.update');
             Route::delete('socialshare/{id}', [SocialshareController::class, 'destroy'])->name('socialshare.destroy');
+
+              // Social Footer routes
+              Route::get('socialfooter', [SocialfooterController::class, 'index'])->name('socialfooter.index');
+              Route::get('socialfooter/create', [SocialfooterController::class, 'create'])->name('socialfooter.create');
+              Route::post('socialfooter', [SocialfooterController::class, 'store'])->name('socialfooter.store');
+              Route::get('socialfooter/{id}/edit', [SocialfooterController::class, 'edit'])->name('socialfooter.edit');
+              Route::put('socialfooter/{id}', [SocialfooterController::class, 'update'])->name('socialfooter.update');
+              Route::delete('socialfooter/{id}', [SocialfooterController::class, 'destroy'])->name('socialfooter.destroy');
+              Route::post('socialfooter/order', [SocialfooterController::class, 'order'])->name('socialfooter.order');
+              Route::post('socialfooter/toggle-status/{id}', [SocialfooterController::class, 'toggleStatus'])->name('socialfooter.toggle-status');
 
         });
     });

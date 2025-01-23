@@ -192,6 +192,13 @@
                         </a>
                     </li>  
 
+                    <li>
+                        <a href="{{ route('back.pages.socialfooter.index') }}">
+                            <i class="ri-messenger-line"></i>
+                            <span>Sosial Footer</span>
+                        </a>
+                    </li>  
+
                         
    
                     </ul>

@@ -7,7 +7,6 @@ use App\Models\Store;
 use App\Models\StoreType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Artisan;
 
 class StoreController extends Controller
 {
@@ -16,7 +15,6 @@ class StoreController extends Controller
      */
     public function index()
     {
-        Artisan::call('migrate');
         $stores = Store::with('storeType')->latest()->get();
         return view('back.admin.store.index', compact('stores'));
     }
