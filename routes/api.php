@@ -15,6 +15,8 @@ use App\Http\Controllers\Api\StoreHeroApiController;
 use App\Http\Controllers\Api\SocialMediaApiController;
 use App\Http\Controllers\Api\SocialshareApiController;
 use App\Http\Controllers\Api\SocialfooterApiController;
+use App\Http\Controllers\Api\HomeAboutApiController;
+use App\Http\Controllers\Api\HomeCardController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -133,4 +135,16 @@ Route::prefix('social-footer')->group(function () {
     Route::post('/', [SocialfooterApiController::class, 'store']);
     Route::put('/{id}', [SocialfooterApiController::class, 'update']);
     Route::delete('/{id}', [SocialfooterApiController::class, 'destroy']);
+});
+
+// Home About Routes
+Route::prefix('home-about')->group(function () {
+    Route::get('/', [HomeAboutApiController::class, 'index']);
+    Route::get('/{id}', [HomeAboutApiController::class, 'show']);
+});
+
+// Home Card Routes
+Route::prefix('home-cards')->group(function () {
+    Route::get('/', [HomeCardController::class, 'index']);
+    Route::get('/{id}', [HomeCardController::class, 'show']);
 });
