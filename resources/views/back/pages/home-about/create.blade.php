@@ -52,14 +52,7 @@
                             </div>
 
                             <!-- Description Section -->
-                            <div class="mb-4">
-                                <label class="form-label">Açıqlama (AZ)</label>
-                                <textarea name="description_az" class="form-control" rows="3"></textarea>
-                                <label class="form-label mt-2">Açıqlama (EN)</label>
-                                <textarea name="description_en" class="form-control" rows="3"></textarea>
-                                <label class="form-label mt-2">Açıqlama (RU)</label>
-                                <textarea name="description_ru" class="form-control" rows="3"></textarea>
-                            </div>
+                            
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -101,6 +94,10 @@
                                         <label class="form-label">Xüsusi Başlıq 3</label>
                                         <input type="text" name="special_title3_az" class="form-control">
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Açıqlama (AZ)</label>
+                                        <textarea name="description_az" class="form-control" rows="3"></textarea>
+                                    </div>
                                 </div>
 
                                 <!-- EN Tab -->
@@ -128,6 +125,10 @@
                                         <label class="form-label">Special Title 3</label>
                                         <input type="text" name="special_title3_en" class="form-control">
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Açıqlama (EN)</label>
+                                        <textarea name="description_en" class="form-control" rows="3"></textarea>
+                                    </div>
                                 </div>
 
                                 <!-- RU Tab -->
@@ -154,6 +155,10 @@
                                     <div class="mb-3">
                                         <label class="form-label">Специальный Заголовок 3</label>
                                         <input type="text" name="special_title3_ru" class="form-control">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Açıqlama (RU)</label>
+                                        <textarea name="description_ru" class="form-control" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
