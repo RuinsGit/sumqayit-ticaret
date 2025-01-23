@@ -27,12 +27,7 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
 
-                <li>
-                    <a href="№" class="waves-effect">
-                        <i class="ri-dashboard-line"></i>
-                        <span>Ana Səhifə</span>
-                    </a>
-                </li>
+                
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -121,14 +116,14 @@
                     <li>
                             <a href="{{ route('back.pages.galleries.index') }}">
                                 <i class="ri-image-line"></i>
-                                <span>Galeriya Sekiller</span>
+                                <span>Şəkillər</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="{{ route('back.pages.gallery-videos.index') }}">
                                 <i class="ri-video-line"></i>
-                                <span>Galeriya Videolar</span>
+                                <span>Videolar</span>
                             </a>
                         </li>
                         
@@ -212,7 +207,7 @@
 
                     <li>
                         <a href="{{ route('back.pages.contact-rent.index') }}">
-                            <i class="ri-contacts-line"></i>
+                            <i class="ri-radio-button-line"></i>
                             <span>Kirayə Tələbi</span>
                         </a>
                     </li>
