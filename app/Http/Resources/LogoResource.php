@@ -11,12 +11,12 @@ class LogoResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'logo_1_image' => asset($this->logo_1_image),
-            'logo_2_image' => asset($this->logo_2_image),
-            'logo_alt1' => $this->logo_alt1,
-            'logo_alt2' => $this->logo_alt2,
-            'logo_title1' => $this->logo_title1,
-            'logo_title2' => $this->logo_title2,
+            'header_logo' => asset($this->logo_1_image),
+            'footer_logo' => asset($this->logo_2_image),
+            'header_alt' => $this->logo_alt1,
+            'footer_alt' => $this->logo_alt2,
+            'header_title' => $this->logo_title1,
+            'footer_title' => $this->logo_title2,
             
            
         ];
