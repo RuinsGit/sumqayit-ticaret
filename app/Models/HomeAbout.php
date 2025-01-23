@@ -15,7 +15,8 @@ class HomeAbout extends Model
         'special_title1_az', 'special_title1_en', 'special_title1_ru',
         'special_title2_az', 'special_title2_en', 'special_title2_ru',
         'special_title3_az', 'special_title3_en', 'special_title3_ru',
-        'images', 'images_alt_az', 'images_alt_en', 'images_alt_ru'
+        'images', 'images_alt_az', 'images_alt_en', 'images_alt_ru',
+        'description_az', 'description_en', 'description_ru'
     ];
 
 

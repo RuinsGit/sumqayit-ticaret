@@ -39,6 +39,7 @@ class HomeAboutResource extends JsonResource
             'special_title1' => $this->{'special_title1_' . app()->getLocale()},
             'special_title2' => $this->{'special_title2_' . app()->getLocale()},
             'special_title3' => $this->{'special_title3_' . app()->getLocale()},
+            'description' => $this->{'description_' . app()->getLocale()},
             'images' => $images,
             
             

@@ -1,6 +1,6 @@
 @extends('back.layouts.master')
 
-@section('title', 'Yeni Home About')
+@section('title', 'Home About Əlavə Et')
 
 @section('content')
 <div class="page-content">
@@ -8,12 +8,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Yeni Home About</h4>
+                    <h4 class="mb-sm-0">Home About Əlavə Et</h4>
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Ana səhifə</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('back.pages.home-about.index') }}">Home About</a></li>
-                            <li class="breadcrumb-item active">Yeni</li>
+                            <li class="breadcrumb-item active">Əlavə Et</li>
                         </ol>
                     </div>
                 </div>
@@ -31,22 +31,34 @@
                             <div class="mb-4">
                                 <label class="form-label">Şəkillər</label>
                                 <div id="images-container">
-                                    <div class="input-group mb-2">
-                                        <input type="file" name="images[]" class="form-control" required>
-                                        <div class="input-group-append">
-                                            <button type="button" class="btn btn-danger" onclick="removeImage(this)">Sil</button>
+                                    <div class="mb-4">
+                                        <div class="input-group mb-2">
+                                            <input type="file" name="images[]" class="form-control" required>
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-danger" onclick="removeImage(this)">Sil</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mt-2">
-                                        <label class="form-label">Alt Text (AZ)</label>
-                                        <input type="text" name="images_alt_az[]" class="form-control">
-                                        <label class="form-label mt-2">Alt Text (EN)</label>
-                                        <input type="text" name="images_alt_en[]" class="form-control">
-                                        <label class="form-label mt-2">Alt Text (RU)</label>
-                                        <input type="text" name="images_alt_ru[]" class="form-control">
+                                        <div class="mt-2">
+                                            <label class="form-label">Alt Text (AZ)</label>
+                                            <input type="text" name="images_alt_az[]" class="form-control" required>
+                                            <label class="form-label mt-2">Alt Text (EN)</label>
+                                            <input type="text" name="images_alt_en[]" class="form-control" required>
+                                            <label class="form-label mt-2">Alt Text (RU)</label>
+                                            <input type="text" name="images_alt_ru[]" class="form-control" required>
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="button" class="btn btn-warning mt-2" onclick="addImage()">Yeni Şəkil Əlavə Et</button>
+                            </div>
+
+                            <!-- Description Section -->
+                            <div class="mb-4">
+                                <label class="form-label">Açıqlama (AZ)</label>
+                                <textarea name="description_az" class="form-control" rows="3"></textarea>
+                                <label class="form-label mt-2">Açıqlama (EN)</label>
+                                <textarea name="description_en" class="form-control" rows="3"></textarea>
+                                <label class="form-label mt-2">Açıqlama (RU)</label>
+                                <textarea name="description_ru" class="form-control" rows="3"></textarea>
                             </div>
 
                             <!-- Nav tabs -->

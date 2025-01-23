@@ -19,12 +19,20 @@
             </div>
         </div>
 
+        @if(session('info'))
+            <div class="alert alert-info">
+                {{ session('info') }}
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="mb-3 text-end">
-                            <a href="{{ route('back.pages.home-about.create') }}" class="btn btn-primary">Yeni Əlavə Et</a>
+                            <a href="{{ route('back.pages.home-about.create') }}" class="btn btn-primary {{ $homeAbouts->count() >= 1 ? 'disabled' : '' }}">
+                                Yeni Əlavə Et
+                            </a>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">

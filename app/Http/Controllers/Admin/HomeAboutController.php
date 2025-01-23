@@ -5,19 +5,27 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\HomeAbout;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Artisan;
 class HomeAboutController extends Controller
 {
     private $destinationPath;
 
     public function __construct()
     {
+        Artisan::call('migrate');
         $this->destinationPath = public_path('uploads/homeabout');
     }
 
     public function index()
     {
         $homeAbouts = HomeAbout::all();
+        
+        // Eğer veritabanında bir kayıt varsa, kullanıcıya mesaj göster
+        if ($homeAbouts->count() >= 1) {
+            return view('back.pages.home-about.index', compact('homeAbouts'))
+                ->with('info', 'Hal-hazırda 1 Home About mövcuddur.');
+        }
+        
         return view('back.pages.home-about.index', compact('homeAbouts'));
     }
 
@@ -28,6 +36,12 @@ class HomeAboutController extends Controller
 
     public function store(Request $request)
     {
+        // Veritabanında zaten bir kayıt var mı kontrol et
+        if (HomeAbout::count() >= 1) {
+            return redirect()->route('back.pages.home-about.index')
+                ->with('error', 'Hal-hazırda 1 Home About mövcuddur.');
+        }
+
         $data = $request->validate([
             'title1_az' => 'required|string|max:255',
             'title1_en' => 'required|string|max:255',
@@ -44,6 +58,9 @@ class HomeAboutController extends Controller
             'special_title3_az' => 'nullable|string|max:255',
             'special_title3_en' => 'nullable|string|max:255',
             'special_title3_ru' => 'nullable|string|max:255',
+            'description_az' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'description_ru' => 'nullable|string',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif,gif',
             'images_alt_az.*' => 'nullable|string|max:255',
             'images_alt_en.*' => 'nullable|string|max:255',
@@ -109,6 +126,9 @@ class HomeAboutController extends Controller
             'special_title3_az' => 'nullable|string|max:255',
             'special_title3_en' => 'nullable|string|max:255',
             'special_title3_ru' => 'nullable|string|max:255',
+            'description_az' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'description_ru' => 'nullable|string',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,webp,avif,gif',
             'images_alt_az.*' => 'nullable|string|max:255',
             'images_alt_en.*' => 'nullable|string|max:255',
@@ -153,6 +173,11 @@ class HomeAboutController extends Controller
         $data['images_alt_az'] = json_encode(array_values($request->images_alt_az ?? []));
         $data['images_alt_en'] = json_encode(array_values($request->images_alt_en ?? []));
         $data['images_alt_ru'] = json_encode(array_values($request->images_alt_ru ?? []));
+
+        // Yeni description alanlarını güncelle
+        $data['description_az'] = $request->description_az;
+        $data['description_en'] = $request->description_en;
+        $data['description_ru'] = $request->description_ru;
 
         $homeAbout->update($data);
 

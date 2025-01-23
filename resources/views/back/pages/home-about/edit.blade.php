@@ -79,6 +79,16 @@
                                 <button type="button" class="btn btn-warning mt-2" onclick="addImage()">Yeni Şəkil Əlavə Et</button>
                             </div>
 
+                            <!-- Description Section -->
+                            <div class="mb-4">
+                                <label class="form-label">Açıqlama (AZ)</label>
+                                <textarea name="description_az" class="form-control" rows="3">{{ $homeAbout->description_az }}</textarea>
+                                <label class="form-label mt-2">Açıqlama (EN)</label>
+                                <textarea name="description_en" class="form-control" rows="3">{{ $homeAbout->description_en }}</textarea>
+                                <label class="form-label mt-2">Açıqlama (RU)</label>
+                                <textarea name="description_ru" class="form-control" rows="3">{{ $homeAbout->description_ru }}</textarea>
+                            </div>
+
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
                                 <li class="nav-item">
