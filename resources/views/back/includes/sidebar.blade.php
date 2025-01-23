@@ -203,6 +203,13 @@
    
                     </ul>
 
+                    <li>
+                        <a href="{{ route('back.pages.contact-rent.index') }}">
+                            <i class="ri-contacts-line"></i>
+                            <span>Kirayə Tələbi</span>
+                        </a>
+                    </li>
+
 
 
 

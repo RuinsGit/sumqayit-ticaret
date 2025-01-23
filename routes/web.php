@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\StoreHeroController;
 use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\SocialshareController;
 use App\Http\Controllers\Admin\SocialfooterController;
+use App\Http\Controllers\Admin\ContactRentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -187,6 +188,9 @@ Route::prefix('admin')->group(function () {
               Route::delete('socialfooter/{id}', [SocialfooterController::class, 'destroy'])->name('socialfooter.destroy');
               Route::post('socialfooter/order', [SocialfooterController::class, 'order'])->name('socialfooter.order');
               Route::post('socialfooter/toggle-status/{id}', [SocialfooterController::class, 'toggleStatus'])->name('socialfooter.toggle-status');
+
+              // Contact Rent routes
+              Route::resource('contact-rent', ContactRentController::class);
 
         });
     });
