@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\StoreTypeApiController;
 use App\Http\Controllers\Api\ContactApiController;
 use App\Http\Controllers\Api\StoreHeroApiController;
 use App\Http\Controllers\Api\SocialMediaApiController;
+use App\Http\Controllers\Api\SocialshareApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -113,4 +114,13 @@ Route::prefix('social-media')->group(function () {
     Route::put('/{id}', [SocialMediaApiController::class, 'update']);
     Route::delete('/{id}', [SocialMediaApiController::class, 'destroy']);
     Route::post('/{id}/toggle-status', [SocialMediaApiController::class, 'toggleStatus']);
+});
+
+// Socialshare Routes
+Route::prefix('socialshares')->group(function () {
+    Route::get('/', [SocialshareApiController::class, 'index']);
+    Route::get('/{id}', [SocialshareApiController::class, 'show']);
+    Route::post('/', [SocialshareApiController::class, 'store']);
+    Route::put('/{id}', [SocialshareApiController::class, 'update']);
+    Route::delete('/{id}', [SocialshareApiController::class, 'destroy']);
 });

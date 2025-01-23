@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\StoreTypeController;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\StoreHeroController;
 use App\Http\Controllers\Admin\SocialMediaController;
+use App\Http\Controllers\Admin\SocialshareController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -167,6 +168,14 @@ Route::prefix('admin')->group(function () {
              Route::delete('social/{id}', [SocialMediaController::class, 'destroy'])->name('social.destroy');
              Route::post('social/order', [SocialMediaController::class, 'order'])->name('social.order');
              Route::post('social/toggle-status/{id}', [SocialMediaController::class, 'toggleStatus'])->name('social.toggle-status');
+
+              // Social Share routes
+            Route::get('socialshare', [SocialshareController::class, 'index'])->name('socialshare.index');
+            Route::get('socialshare/create', [SocialshareController::class, 'create'])->name('socialshare.create');
+            Route::post('socialshare', [SocialshareController::class, 'store'])->name('socialshare.store');
+            Route::get('socialshare/{id}/edit', [SocialshareController::class, 'edit'])->name('socialshare.edit');
+            Route::put('socialshare/{id}', [SocialshareController::class, 'update'])->name('socialshare.update');
+            Route::delete('socialshare/{id}', [SocialshareController::class, 'destroy'])->name('socialshare.destroy');
 
         });
     });
