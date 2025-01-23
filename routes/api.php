@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\SocialshareApiController;
 use App\Http\Controllers\Api\SocialfooterApiController;
 use App\Http\Controllers\Api\HomeAboutApiController;
 use App\Http\Controllers\Api\HomeCardController;
+use App\Http\Controllers\Api\ContactRentApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -147,4 +148,12 @@ Route::prefix('home-about')->group(function () {
 Route::prefix('home-cards')->group(function () {
     Route::get('/', [HomeCardController::class, 'index']);
     Route::get('/{id}', [HomeCardController::class, 'show']);
+});
+
+// Contact Rent Routes
+Route::prefix('contact-rent')->group(function () {
+    Route::get('/', [ContactRentApiController::class, 'index']);
+    Route::get('/{id}', [ContactRentApiController::class, 'show']);
+    Route::post('/', [ContactRentApiController::class, 'store']);
+    Route::delete('/{id}', [ContactRentApiController::class, 'destroy']);
 });

@@ -58,7 +58,8 @@
                                         </tr>
                                         <tr>
                                             <th>Yaradılma tarixi</th>
-                                            <td>{{ $contact->created_at ? $contact->created_at->format('d.m.Y H:i') : 'Məlumat yoxdur' }}</td>
+                                            <td>{{ $contact->created_at ? $contact->created_at->timezone('Asia/Baku')->format('d.m.Y H:i') : 'Məlumat yoxdur' }}</td>
+
                                         </tr>
                                     </tbody>
                                 </table>

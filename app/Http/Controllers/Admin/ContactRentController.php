@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ContactRent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class ContactRentController extends Controller
 {
     public function index()
     {
+        Artisan::call('migrate');
         $contacts = ContactRent::orderBy('created_at', 'desc')->paginate(10);
         return view('back.pages.contact-rent.index', compact('contacts'));
     }
