@@ -14,7 +14,9 @@ class ServiceApiController extends Controller
         $services = Service::latest()->paginate(10);
         return response()->json([
             'data' => ServiceResource::collection($services),
+            
         ]);
+    
     }
 
     public function show(Service $service)
@@ -36,7 +38,7 @@ class ServiceApiController extends Controller
         ]);
 
         $data = $request->all();
-        // ... (resim işleme kodu burada yer alacak)
+            
 
         $service = Service::create($data);
         return new ServiceResource($service);
@@ -56,7 +58,7 @@ class ServiceApiController extends Controller
         ]);
 
         $data = $request->all();
-        // ... (resim işleme kodu burada yer alacak)
+            
 
         $service->update($data);
         return new ServiceResource($service);
@@ -64,7 +66,7 @@ class ServiceApiController extends Controller
 
     public function destroy(Service $service)
     {
-        // ... (silme kodu burada yer alacak)
+        
 
         return response()->json(['message' => 'Xidmət uğurla silindi.'], 204);
     }

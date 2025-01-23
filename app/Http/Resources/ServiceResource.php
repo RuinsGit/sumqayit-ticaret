@@ -12,7 +12,9 @@ class ServiceResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'image' => $this->image,
+            'image' => asset('./'.$this->image),
+            
+            
             
            
             
