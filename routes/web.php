@@ -80,7 +80,6 @@ Route::prefix('admin')->group(function () {
              // SEO routes
            
             Route::resource('seo', SeoController::class);
-                
 
             Route::get('seo/toggle-status/{id}', [SeoController::class, 'toggleStatus'])->name('seo.toggle-status');
             Route::post('seo/toggle-status/{id}', [SeoController::class, 'toggleStatus'])->name('seo.toggle-status.post');
