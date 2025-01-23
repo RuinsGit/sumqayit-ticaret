@@ -98,6 +98,13 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{ route('back.pages.contactfooter.index') }}">
+                                <i class="ri-contacts-line"></i>
+                                <span>Əlaqə Footer</span>
+                            </a>
+                        </li>
+
                        
 
                         <li>

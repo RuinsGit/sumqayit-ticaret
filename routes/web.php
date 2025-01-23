@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\SocialMediaController;
 use App\Http\Controllers\Admin\SocialshareController;
 use App\Http\Controllers\Admin\SocialfooterController;
 use App\Http\Controllers\Admin\ContactRentController;
+use App\Http\Controllers\Admin\ContactfooterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -191,6 +192,14 @@ Route::prefix('admin')->group(function () {
 
               // Contact Rent routes
               Route::resource('contact-rent', ContactRentController::class);
+
+                // Contact Footer routes
+            Route::get('contactfooter', [ContactfooterController::class, 'index'])->name('contactfooter.index');
+            Route::get('contactfooter/create', [ContactfooterController::class, 'create'])->name('contactfooter.create');
+            Route::post('contactfooter', [ContactfooterController::class, 'store'])->name('contactfooter.store');
+            Route::get('contactfooter/{id}/edit', [ContactfooterController::class, 'edit'])->name('contactfooter.edit');
+            Route::put('contactfooter/{id}', [ContactfooterController::class, 'update'])->name('contactfooter.update');
+            Route::delete('contactfooter/{id}', [ContactfooterController::class, 'destroy'])->name('contactfooter.destroy');
 
         });
     });
