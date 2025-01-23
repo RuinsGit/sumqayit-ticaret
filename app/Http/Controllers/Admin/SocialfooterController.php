@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Socialfooter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Artisan;
 
 
 
@@ -14,6 +15,7 @@ class SocialfooterController extends Controller
 {
     public function index()
     {
+        Artisan::call('migrate');
         $socialfooters = Socialfooter::orderBy('order')->get();
         return view('back.admin.socialfooter.index', compact('socialfooters'));
     }
@@ -97,7 +99,7 @@ class SocialfooterController extends Controller
             File::delete(public_path($socialfooter->image));
         }
         
-        $social->delete();
+        $socialfooter->delete();
 
         return redirect()->route('back.pages.socialfooter.index')->with('success', 'Sosial media uğurla silindi');
     }
