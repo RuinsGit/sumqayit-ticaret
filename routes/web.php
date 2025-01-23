@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\StoreTypeController;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\StoreHeroController;
+use App\Http\Controllers\Admin\SocialMediaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -156,6 +157,16 @@ Route::prefix('admin')->group(function () {
 
             // Store Hero
             Route::resource('store-hero', StoreHeroController::class);
+
+             // Social Media routes
+             Route::get('social', [SocialMediaController::class, 'index'])->name('social.index');
+             Route::get('social/create', [SocialMediaController::class, 'create'])->name('social.create');
+             Route::post('social', [SocialMediaController::class, 'store'])->name('social.store');
+             Route::get('social/{id}/edit', [SocialMediaController::class, 'edit'])->name('social.edit');
+             Route::put('social/{id}', [SocialMediaController::class, 'update'])->name('social.update');
+             Route::delete('social/{id}', [SocialMediaController::class, 'destroy'])->name('social.destroy');
+             Route::post('social/order', [SocialMediaController::class, 'order'])->name('social.order');
+             Route::post('social/toggle-status/{id}', [SocialMediaController::class, 'toggleStatus'])->name('social.toggle-status');
 
         });
     });

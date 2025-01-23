@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\StoreApiController;
 use App\Http\Controllers\Api\StoreTypeApiController;
 use App\Http\Controllers\Api\ContactApiController;
 use App\Http\Controllers\Api\StoreHeroApiController;
+use App\Http\Controllers\Api\SocialMediaApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -102,4 +103,14 @@ Route::prefix('contact')->group(function () {
 Route::prefix('store-hero')->group(function () {
     Route::get('/', [StoreHeroApiController::class, 'index']);
     Route::get('/{id}', [StoreHeroApiController::class, 'show']);
+});
+
+// Social Media Routes
+Route::prefix('social-media')->group(function () {
+    Route::get('/', [SocialMediaApiController::class, 'index']);
+    Route::get('/{id}', [SocialMediaApiController::class, 'show']);
+    Route::post('/', [SocialMediaApiController::class, 'store']);
+    Route::put('/{id}', [SocialMediaApiController::class, 'update']);
+    Route::delete('/{id}', [SocialMediaApiController::class, 'destroy']);
+    Route::post('/{id}/toggle-status', [SocialMediaApiController::class, 'toggleStatus']);
 });

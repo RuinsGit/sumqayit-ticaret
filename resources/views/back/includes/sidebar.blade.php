@@ -81,15 +81,7 @@
                                 <span>Haqqımızda</span>
                             </a>
                         </li>
-
-                       
-
-
-                        
-                        
-
-                         
-                       
+   
                     </ul>
                     <li>
                             <a href="{{ route('back.pages.services.index') }}">
@@ -179,7 +171,23 @@
                     </li>
 
                         
+                    <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-share-line"></i>
+                        <span>Sosial Media</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                       
+                    <li>
+                            <a href="{{ route('back.pages.social.index') }}">
+                                <i class="ri-messenger-line"></i>
+                                <span>Sosial Media</span>
+                            </a>
+                        </li>   
 
+                        
+   
+                    </ul>
 
 
 
