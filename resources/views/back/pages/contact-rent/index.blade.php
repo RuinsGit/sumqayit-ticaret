@@ -73,7 +73,7 @@
                                 </table>
                             </div>
 
-                            {{ $contacts->links() }}
+                            {{ $contacts->links('vendor.pagination.custom') }}
                         </div>
                     </div>
                 </div>
