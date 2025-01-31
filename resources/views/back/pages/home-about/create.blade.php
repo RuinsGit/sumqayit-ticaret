@@ -54,7 +54,10 @@
                             <!-- Description Section -->
                             <div class="mb-3">
                                 <label class="form-label">Açıqlama (AZ)</label>
-                                <textarea name="description_az" class="form-control summernote" rows="3"></textarea>
+                                <textarea name="description_az" class="form-control summernote @error('description_az') is-invalid @enderror" rows="3">{{ old('description_az') }}</textarea>
+                                @error('description_az')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <!-- Nav tabs -->
@@ -126,7 +129,10 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Açıqlama (EN)</label>
-                                        <textarea name="description_en" class="form-control summernote" rows="3"></textarea>
+                                        <textarea name="description_en" class="form-control summernote @error('description_en') is-invalid @enderror" rows="3">{{ old('description_en') }}</textarea>
+                                        @error('description_en')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -157,7 +163,10 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Açıqlama (RU)</label>
-                                        <textarea name="description_ru" class="form-control summernote" rows="3"></textarea>
+                                        <textarea name="description_ru" class="form-control summernote @error('description_ru') is-invalid @enderror" rows="3">{{ old('description_ru') }}</textarea>
+                                        @error('description_ru')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -259,10 +268,11 @@
 
 @push('css')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endpush
 
 @push('js')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.summernote').summernote({
