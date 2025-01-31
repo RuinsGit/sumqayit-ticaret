@@ -52,7 +52,10 @@
                             </div>
 
                             <!-- Description Section -->
-                            
+                            <div class="mb-3">
+                                <label class="form-label">Açıqlama (AZ)</label>
+                                <textarea name="description_az" class="form-control summernote" rows="3"></textarea>
+                            </div>
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
@@ -94,10 +97,6 @@
                                         <label class="form-label">Xüsusi Başlıq 3</label>
                                         <input type="text" name="special_title3_az" class="form-control">
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Açıqlama (AZ)</label>
-                                        <textarea name="description_az" class="form-control" rows="3"></textarea>
-                                    </div>
                                 </div>
 
                                 <!-- EN Tab -->
@@ -127,7 +126,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Açıqlama (EN)</label>
-                                        <textarea name="description_en" class="form-control" rows="3"></textarea>
+                                        <textarea name="description_en" class="form-control summernote" rows="3"></textarea>
                                     </div>
                                 </div>
 
@@ -158,7 +157,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Açıqlama (RU)</label>
-                                        <textarea name="description_ru" class="form-control" rows="3"></textarea>
+                                        <textarea name="description_ru" class="form-control summernote" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -257,4 +256,28 @@
         }
     }
 </script>
+
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endpush
+
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 200,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    });
+</script>
+@endpush
 @endsection

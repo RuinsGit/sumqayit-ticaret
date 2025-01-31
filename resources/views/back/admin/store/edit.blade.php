@@ -166,7 +166,7 @@
                                     <div class="tab-pane active" id="az" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Təsvir</label>
-                                            <textarea name="description_az" class="form-control @error('description_az') is-invalid @enderror" rows="4" required>{{ old('description_az', $store->description_az) }}</textarea>
+                                            <textarea name="description_az" class="form-control summernote @error('description_az') is-invalid @enderror" rows="4" required>{{ old('description_az', $store->description_az) }}</textarea>
                                             @error('description_az')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -198,7 +198,7 @@
                                     <div class="tab-pane" id="en" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Description</label>
-                                            <textarea name="description_en" class="form-control @error('description_en') is-invalid @enderror" rows="4">{{ old('description_en', $store->description_en) }}</textarea>
+                                            <textarea name="description_en" class="form-control summernote @error('description_en') is-invalid @enderror" rows="4">{{ old('description_en', $store->description_en) }}</textarea>
                                             @error('description_en')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -230,7 +230,7 @@
                                     <div class="tab-pane" id="ru" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Описание</label>
-                                            <textarea name="description_ru" class="form-control @error('description_ru') is-invalid @enderror" rows="4">{{ old('description_ru', $store->description_ru) }}</textarea>
+                                            <textarea name="description_ru" class="form-control summernote @error('description_ru') is-invalid @enderror" rows="4">{{ old('description_ru', $store->description_ru) }}</textarea>
                                             @error('description_ru')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -322,4 +322,28 @@
         });
     @endif
 </script>
-@endsection 
+@endsection
+
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endpush
+
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            height: 200,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    });
+</script>
+@endpush 
