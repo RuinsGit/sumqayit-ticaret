@@ -1,6 +1,6 @@
 @extends('back.layouts.master')
 
-@section('title', 'Marketler')
+@section('title', 'Brendlər')
 
 @section('content')
 <div class="page-content">
@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Marketler</h4>
+                    <h4 class="mb-sm-0">Brendlər</h4>
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Ana səhifə</a></li>
-                            <li class="breadcrumb-item active">Marketler</li>
+                            <li class="breadcrumb-item active">Brendlər</li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-end mb-3">
                             <a href="{{ route('back.pages.market.create') }}" class="btn btn-primary">
-                                <i class="ri-add-line"></i> Yeni Market Əlavə Et
+                                <i class="ri-add-line"></i> Yeni Brend Əlavə Et
                             </a>
                         </div>
 

@@ -170,7 +170,7 @@
                     <li>
                         <a href="{{ route('back.pages.market.index') }}">
                             <i class="ri-store-3-line"></i>
-                            <span>Magaza Növləri</span>
+                            <span>Brendlər</span>
                         </a>
                     </li>  
 

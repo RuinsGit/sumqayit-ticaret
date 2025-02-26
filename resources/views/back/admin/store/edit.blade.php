@@ -45,7 +45,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-md-4">
-                                        <label class="form-label">Magaza Növü</label>
+                                        <label class="form-label">Brend</label>
                                         <select name="market_id" class="form-select @error('market_id') is-invalid @enderror">
                                             <option value="">Seçin</option>
                                             @foreach($markets as $market)

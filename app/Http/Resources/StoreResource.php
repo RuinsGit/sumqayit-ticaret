@@ -17,7 +17,7 @@ class StoreResource extends JsonResource
         return [
             'id' => $this->id,
             'store_category' => new StoreTypeResource($this->storeType),
-            'store_type' => new MarketResource($this->market),
+            'store_brand' => new MarketResource($this->market),
             'description' => $this->description,
             
             'image' => $this->image ? asset($this->image) : null,
