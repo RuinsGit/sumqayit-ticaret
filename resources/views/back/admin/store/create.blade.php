@@ -30,7 +30,7 @@
                                 <!-- Store Type Selection -->
                                 <div class="row mb-3">
                                     <div class="col-md-4">
-                                        <label class="form-label">Mağaza Növü</label>
+                                        <label class="form-label">Kateqoriya</label>
                                         <select name="store_type_id" class="form-select @error('store_type_id') is-invalid @enderror" required>
                                             <option value="">Seçin</option>
                                             @foreach($storeTypes as $type)
@@ -40,6 +40,20 @@
                                             @endforeach
                                         </select>
                                         @error('store_type_id')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Magaza Növü</label>
+                                        <select name="market_id" class="form-select @error('market_id') is-invalid @enderror">
+                                            <option value="">Seçin</option>
+                                            @foreach($markets as $market)
+                                                <option value="{{ $market->id }}" {{ old('market_id') == $market->id ? 'selected' : '' }}>
+                                                    {{ $market->name_az }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('market_id')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

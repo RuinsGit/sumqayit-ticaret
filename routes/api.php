@@ -20,6 +20,7 @@ use App\Http\Controllers\Api\HomeCardController;
 use App\Http\Controllers\Api\ContactRentApiController;
 use App\Http\Controllers\Api\ContactfooterApiController;
 use App\Http\Controllers\Api\ServiceApiController;
+use App\Http\Controllers\Api\MarketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -171,4 +172,12 @@ Route::prefix('contact-footer')->group(function () {
 });
 
 Route::apiResource('services', ServiceApiController::class);
+
+Route::middleware('auth:api')->prefix('markets')->group(function () {
+    Route::get('/', [MarketController::class, 'index'])->name('markets.index');
+    Route::post('/', [MarketController::class, 'store'])->name('markets.store');
+    Route::get('/{id}', [MarketController::class, 'show'])->name('markets.show');
+    Route::put('/{id}', [MarketController::class, 'update'])->name('markets.update');
+    Route::delete('/{id}', [MarketController::class, 'destroy'])->name('markets.destroy');
+});
 

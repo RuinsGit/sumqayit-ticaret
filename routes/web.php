@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\SocialshareController;
 use App\Http\Controllers\Admin\SocialfooterController;
 use App\Http\Controllers\Admin\ContactRentController;
 use App\Http\Controllers\Admin\ContactfooterController;
+use App\Http\Controllers\Admin\MarketController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -200,6 +201,18 @@ Route::prefix('admin')->group(function () {
             Route::put('contactfooter/{id}', [ContactfooterController::class, 'update'])->name('contactfooter.update');
             Route::delete('contactfooter/{id}', [ContactfooterController::class, 'destroy'])->name('contactfooter.destroy');
 
+            // Market Routes
+            Route::group(['prefix' => 'market', 'as' => 'market.'], function () {
+            Route::get('/', [MarketController::class, 'index'])->name('index');
+            Route::get('/create', [MarketController::class, 'create'])->name('create');
+            Route::post('/', [MarketController::class, 'store'])->name('store');
+            Route::get('/{market}/edit', [MarketController::class, 'edit'])->name('edit');
+            Route::put('/{market}', [MarketController::class, 'update'])->name('update');
+            Route::delete('/{market}', [MarketController::class, 'destroy'])->name('destroy');
+            });
+
+
         });
     });
 });
+

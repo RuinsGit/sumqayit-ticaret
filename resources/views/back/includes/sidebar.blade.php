@@ -149,7 +149,7 @@
                         <li>
                         <a href="{{ route('back.pages.store-type.index') }}">
                             <i class=" ri-brackets-line"></i>
-                            <span>Mağaza novleri</span>
+                            <span>Kateqoriyalar</span>
                         </a>
                     </li>
 
@@ -165,7 +165,14 @@
                             <i class="ri-store-3-line"></i>
                             <span>Mağazalar Hero</span>
                         </a>
-                    </li>   
+                    </li>  
+
+                    <li>
+                        <a href="{{ route('back.pages.market.index') }}">
+                            <i class="ri-store-3-line"></i>
+                            <span>Magaza Növləri</span>
+                        </a>
+                    </li>  
 
                         
                             

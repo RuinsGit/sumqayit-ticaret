@@ -11,6 +11,7 @@ class Store extends Model
 
     protected $fillable = [
         'store_type_id',
+        'market_id',
         'image',
         'image_alt_az',
         'image_alt_en',
@@ -42,6 +43,11 @@ class Store extends Model
     public function storeType()
     {
         return $this->belongsTo(StoreType::class);
+    }
+
+    public function market()
+    {
+        return $this->belongsTo(Market::class);
     }
 
     public function getDescriptionAttribute()

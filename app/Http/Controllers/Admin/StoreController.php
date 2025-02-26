@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Store;
 use App\Models\StoreType;
+use App\Models\Market;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +26,8 @@ class StoreController extends Controller
     public function create()
     {
         $storeTypes = StoreType::where('status', 1)->get();
-        return view('back.admin.store.create', compact('storeTypes'));
+        $markets = Market::where('status', 1)->get();
+        return view('back.admin.store.create', compact('storeTypes', 'markets'));
     }
 
     /**
@@ -69,6 +71,7 @@ class StoreController extends Controller
     {
         $request->validate([
             'store_type_id' => 'required|exists:store_types,id',
+            'market_id' => 'nullable|exists:markets,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'image_alt_az' => 'nullable|string',
             'image_alt_en' => 'nullable|string',
@@ -131,7 +134,8 @@ class StoreController extends Controller
     public function edit(Store $store)
     {
         $storeTypes = StoreType::where('status', 1)->get();
-        return view('back.admin.store.edit', compact('store', 'storeTypes'));
+        $markets = Market::where('status', 1)->get();
+        return view('back.admin.store.edit', compact('store', 'storeTypes', 'markets'));
     }
 
     /**
@@ -141,6 +145,7 @@ class StoreController extends Controller
     {
         $request->validate([
             'store_type_id' => 'required|exists:store_types,id',
+            'market_id' => 'nullable|exists:markets,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'image_alt_az' => 'nullable|string',
             'image_alt_en' => 'nullable|string',
