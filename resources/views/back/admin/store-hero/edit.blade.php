@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('back.pages.store-hero.index') }}">Hero</a></li>
                             <li class="breadcrumb-item active">Düzənlə</li>
                         </ol>
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                             @method('PUT')
 
                             <div class="mb-3">
-                                <label for="image" class="form-label">Mövcud Şəkil:</label>
+                                <label for="image" class="form-label">Mövcud Şəkil (1440x480):</label>
                                 <div class="current-image-container">
                                     <div class="image-preview">
                                         <img src="{{ asset($storeHero->image) }}" 
@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="image" class="form-label">Yeni Şəkil:</label>
+                                <label for="image" class="form-label">Yeni Şəkil (1440x480):</label>
                                 <input type="file" class="form-control" name="image" accept=".jpeg,.png,.jpg,.gif,.svg">
                             </div>
 

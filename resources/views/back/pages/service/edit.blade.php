@@ -109,7 +109,7 @@
 
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Üst Şəkil</label>
+                                        <label class="form-label">Üst Şəkil (700x740)</label>
                                         @if($service->image)
                                             <div class="mb-2">
                                                 <img src="{{ asset($service->image) }}" alt="Current Image" class="img-thumbnail" style="max-height: 150px">

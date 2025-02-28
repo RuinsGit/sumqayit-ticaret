@@ -38,7 +38,7 @@
                             @csrf
 
                             <div class="mb-3">
-                                <label for="image" class="form-label">Şəkil:</label>
+                                <label for="image" class="form-label">Şəkil (1440x600):</label>
                                 <input type="file" class="form-control" name="image" accept=".jpeg,.png,.jpg,.gif,.svg" required>
                             </div>
 

@@ -31,7 +31,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Əsas Şəkil</label>
+                                            <label class="form-label">Əsas Şəkil (1440x500)</label>
                                             <input type="file" name="main_image" class="form-control @error('main_image') is-invalid @enderror" required>
                                             @error('main_image')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label class="form-label">Alt Şəkillər</label>
+                                            <label class="form-label">Alt Şəkillər (847x380)</label>
                                             <div id="bottom-images-container">
                                                 <div class="input-group mb-2">
                                                     <input type="file" name="bottom_images[]" class="form-control">

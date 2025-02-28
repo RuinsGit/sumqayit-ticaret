@@ -108,7 +108,7 @@
 
                                 <div class="row mb-3">
                                     <div class="col-md-6">
-                                        <label class="form-label">Üst Şəkil</label>
+                                        <label class="form-label">Üst Şəkil (700x740)</label>
                                         <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
                                         @error('image')
                                         <div class="invalid-feedback">{{ $message }}</div>

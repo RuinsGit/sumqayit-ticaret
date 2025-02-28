@@ -50,7 +50,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="image" class="form-label">Yeni Şəkil:</label>
+                                <label for="image" class="form-label">Yeni Şəkil (1440x600):</label>
                                 <input type="file" class="form-control" name="image" accept=".jpeg,.png,.jpg,.gif,.svg">
                             </div>
 

@@ -31,7 +31,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label">Əsas Şəkil</label>
+                                            <label class="form-label">Əsas Şəkil (320x360)</label>
                                             <input type="file" name="main_image" class="form-control @error('main_image') is-invalid @enderror" required>
                                             @error('main_image')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label">Alt Şəkil</label>
+                                            <label class="form-label">Alt Şəkil (1280x500)</label>
                                             <input type="file" name="bottom_image" class="form-control @error('bottom_image') is-invalid @enderror" required>
                                             @error('bottom_image')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-3">
-                                            <label class="form-label">Əlavə Şəkillər</label>
+                                            <label class="form-label">Əlavə Şəkillər (413x320)</label>
                                             <button type="button" class="btn btn-soft-primary btn-sm mb-2" onclick="addImageInput()">
                                                 <i class="ri-add-line"></i> Yeni Şəkil Əlavə Et
                                             </button>

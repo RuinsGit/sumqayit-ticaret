@@ -29,7 +29,7 @@
 
                             <!-- Image Upload Section -->
                             <div class="mb-4">
-                                <label class="form-label">Şəkillər</label>
+                                <label class="form-label">Şəkillər (302x362)</label>
                                 <div id="images-container">
                                     <div class="mb-4">
                                         <div class="input-group mb-2">
