@@ -47,7 +47,7 @@
                                         @forelse($stores as $store)
                                             <tr>
                                                 <td>{{ $store->id }}</td>
-                                                <td>{{ $store->storeType->name_az }}</td>
+                                                <td>{{ $store->storeType ? $store->storeType->name_az : 'Kategoriya Yoxdur' }}</td>
                                                 <td>
                                                     @if($store->image)
                                                         <img src="{{ asset($store->image) }}" alt="" style="height: 50px;">

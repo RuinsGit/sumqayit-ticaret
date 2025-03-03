@@ -107,7 +107,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Əsas Şəkil ALT</label>
                                             <input type="text" name="main_image_alt_az" class="form-control @error('main_image_alt_az') is-invalid @enderror" value="{{ old('main_image_alt_az') }}" required>
                                             @error('main_image_alt_az')
@@ -128,7 +128,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Meta Açıqlama</label>
                                             <textarea name="meta_description_az" class="form-control" rows="3">{{ old('meta_description_az') }}</textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- EN Tab -->
@@ -154,7 +154,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Main Image ALT</label>
                                             <input type="text" name="main_image_alt_en" class="form-control @error('main_image_alt_en') is-invalid @enderror" value="{{ old('main_image_alt_en') }}" required>
                                             @error('main_image_alt_en')
@@ -175,7 +175,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Meta Description</label>
                                             <textarea name="meta_description_en" class="form-control" rows="3">{{ old('meta_description_en') }}</textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- RU Tab -->
@@ -201,7 +201,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">ALT главного изображения</label>
                                             <input type="text" name="main_image_alt_ru" class="form-control @error('main_image_alt_ru') is-invalid @enderror" value="{{ old('main_image_alt_ru') }}" required>
                                             @error('main_image_alt_ru')
@@ -222,7 +222,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Мета-описание</label>
                                             <textarea name="meta_description_ru" class="form-control" rows="3">{{ old('meta_description_ru') }}</textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
@@ -258,9 +258,9 @@
             
             // Alt inputs for each language
             const languages = [
-                { code: 'az', placeholder: 'ALT mətni' },
-                { code: 'en', placeholder: 'ALT text' },
-                { code: 'ru', placeholder: 'ALT текст' }
+                // { code: 'az', placeholder: 'ALT mətni' },
+                // { code: 'en', placeholder: 'ALT text' },
+                // { code: 'ru', placeholder: 'ALT текст' }
             ];
             
             languages.forEach(lang => {

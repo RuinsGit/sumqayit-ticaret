@@ -31,7 +31,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-4">
                                         <label class="form-label">Kateqoriya</label>
-                                        <select name="store_type_id" class="form-select @error('store_type_id') is-invalid @enderror" required>
+                                        <select name="store_type_id" id="store_type_id" class="form-select @error('store_type_id') is-invalid @enderror">
                                             <option value="">Seçin</option>
                                             @foreach($storeTypes as $type)
                                                 <option value="{{ $type->id }}" {{ old('store_type_id') == $type->id ? 'selected' : '' }}>
@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Brend</label>
-                                        <select name="market_id" class="form-select @error('market_id') is-invalid @enderror">
+                                        <select name="market_id" id="market_id" class="form-select @error('market_id') is-invalid @enderror">
                                             <option value="">Seçin</option>
                                             @foreach($markets as $market)
                                                 <option value="{{ $market->id }}" {{ old('market_id') == $market->id ? 'selected' : '' }}>
@@ -57,6 +57,11 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    @error('selection_error')
+                                        <div class="col-md-8 mt-2">
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        </div>
+                                    @enderror
                                 </div>
 
                                 <!-- Image Upload Section -->
@@ -328,6 +333,47 @@
                 ['view', ['fullscreen', 'codeview', 'help']]
             ]
         });
+
+        // Form gönderilmeden önce disable edilmiş alanları temizle
+        $('form').on('submit', function() {
+            if ($('#store_type_id').val() !== '') {
+                $('#market_id').val('');
+            }
+            
+            if ($('#market_id').val() !== '') {
+                $('#store_type_id').val('');
+            }
+            
+            // Disable olan elementlerin değerlerini temizle
+            $('#store_type_id, #market_id').prop('disabled', false);
+            return true;
+        });
+
+        // Kategori-Marka seçim kontrolü
+        $('#store_type_id').on('change', function() {
+            if($(this).val() !== '') {
+                $('#market_id').prop('disabled', true).val('');
+            } else {
+                $('#market_id').prop('disabled', false);
+            }
+        });
+
+        $('#market_id').on('change', function() {
+            if($(this).val() !== '') {
+                $('#store_type_id').prop('disabled', true).val('');
+            } else {
+                $('#store_type_id').prop('disabled', false);
+            }
+        });
+
+        // Sayfa yüklendiğinde mevcut değerlere göre durumu ayarla
+        if($('#store_type_id').val() !== '') {
+            $('#market_id').prop('disabled', true).val('');
+        }
+        
+        if($('#market_id').val() !== '') {
+            $('#store_type_id').prop('disabled', true).val('');
+        }
     });
 </script>
 @endpush 

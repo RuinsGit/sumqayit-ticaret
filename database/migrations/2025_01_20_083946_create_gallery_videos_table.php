@@ -22,17 +22,17 @@ return new class extends Migration
             $table->string('slug_en')->unique();
             $table->string('slug_ru')->unique();
             
-            $table->string('main_video');
-            $table->string('main_video_thumbnail');
-            $table->string('main_video_alt_az');
-            $table->string('main_video_alt_en');
-            $table->string('main_video_alt_ru');
+            $table->string('main_video')->nullable();
+            $table->string('main_video_thumbnail')->nullable();
+            $table->string('main_video_alt_az')->nullable();
+            $table->string('main_video_alt_en')->nullable();
+            $table->string('main_video_alt_ru')->nullable();
             
-            $table->string('bottom_video');
-            $table->string('bottom_video_thumbnail');
-            $table->string('bottom_video_alt_az');
-            $table->string('bottom_video_alt_en');
-            $table->string('bottom_video_alt_ru');
+            $table->string('bottom_video')->nullable();
+            $table->string('bottom_video_thumbnail')->nullable();
+            $table->string('bottom_video_alt_az')->nullable();
+            $table->string('bottom_video_alt_en')->nullable();
+            $table->string('bottom_video_alt_ru')->nullable();
             
             $table->json('multiple_videos')->nullable();
             

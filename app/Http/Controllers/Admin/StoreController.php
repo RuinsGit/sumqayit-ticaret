@@ -70,7 +70,7 @@ class StoreController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'store_type_id' => 'required|exists:store_types,id',
+            'store_type_id' => 'nullable|exists:store_types,id',
             'market_id' => 'nullable|exists:markets,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'image_alt_az' => 'nullable|string',
@@ -96,7 +96,16 @@ class StoreController extends Controller
             'status' => 'required|boolean'
         ]);
 
+        // Kontrol et: En az biri dolu olmalı
+        if (empty($request->store_type_id) && empty($request->market_id)) {
+            return back()->withErrors(['selection_error' => 'Lütfen bir kategori veya marka seçin.'])->withInput();
+        }
+
+        // Her iki değer de doluysa, sadece birini kabul et (bu hatayı önlemeye yönelik)
         $data = $request->all();
+        if (!empty($data['store_type_id']) && !empty($data['market_id'])) {
+            $data['market_id'] = null; // Kategori öncelikli kabul ediyoruz
+        }
 
         // Handle main images (WebP conversion)
         if ($request->hasFile('image')) {
@@ -144,7 +153,7 @@ class StoreController extends Controller
     public function update(Request $request, Store $store)
     {
         $request->validate([
-            'store_type_id' => 'required|exists:store_types,id',
+            'store_type_id' => 'nullable|exists:store_types,id',
             'market_id' => 'nullable|exists:markets,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'image_alt_az' => 'nullable|string',
@@ -170,7 +179,16 @@ class StoreController extends Controller
             'status' => 'required|boolean'
         ]);
 
+        // Kontrol et: En az biri dolu olmalı
+        if (empty($request->store_type_id) && empty($request->market_id)) {
+            return back()->withErrors(['selection_error' => 'Lütfen bir kategori veya marka seçin.'])->withInput();
+        }
+
+        // Her iki değer de doluysa, sadece birini kabul et (bu hatayı önlemeye yönelik)
         $data = $request->all();
+        if (!empty($data['store_type_id']) && !empty($data['market_id'])) {
+            $data['market_id'] = null; // Kategori öncelikli kabul ediyoruz
+        }
 
         // Handle main images (WebP conversion)
         if ($request->hasFile('image')) {
