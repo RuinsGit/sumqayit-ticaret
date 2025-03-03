@@ -95,7 +95,7 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
+<!-- 
                                         <div class="mb-3">
                                             <label class="form-label">Əsas Şəkil ALT</label>
                                             <input type="text" name="main_image_alt_az" class="form-control @error('main_image_alt_az') is-invalid @enderror" required>
@@ -110,7 +110,7 @@
                                                 <input type="text" name="bottom_images_alt_az[]" class="form-control mb-2" placeholder="ALT mətni">
                                             </div>
                                             <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('az')">Yeni ALT Mətn Əlavə Et</button>
-                                        </div>
+                                        </div> -->
 
                                         <div class="mb-3">
                                             <label class="form-label">Mətn</label>
@@ -130,7 +130,7 @@
                                             <textarea name="description_2_az" class="form-control summernote"></textarea>
                                         </div>
 
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Meta Başlıq</label>
                                             <input type="text" name="meta_title_az" class="form-control">
                                         </div>
@@ -138,7 +138,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Meta Məzmun</label>
                                             <textarea name="meta_description_az" class="form-control" rows="3"></textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- İngilis dili -->
@@ -158,7 +158,7 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-
+<!-- 
                                         <div class="mb-3">
                                             <label class="form-label">Main Image ALT</label>
                                             <input type="text" name="main_image_alt_en" class="form-control @error('main_image_alt_en') is-invalid @enderror" required>
@@ -173,7 +173,7 @@
                                                 <input type="text" name="bottom_images_alt_en[]" class="form-control mb-2" placeholder="ALT text">
                                             </div>
                                             <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('en')">Add New ALT Text</button>
-                                        </div>
+                                        </div> -->
 
                                         <div class="mb-3">
                                             <label class="form-label">Text</label>
@@ -193,7 +193,7 @@
                                             <textarea name="description_2_en" class="form-control summernote"></textarea>
                                         </div>
 
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Meta Title</label>
                                             <input type="text" name="meta_title_en" class="form-control">
                                         </div>
@@ -201,7 +201,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Meta Description</label>
                                             <textarea name="meta_description_en" class="form-control" rows="3"></textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- Rus dili -->
@@ -222,7 +222,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">ALT главного изображения</label>
                                             <input type="text" name="main_image_alt_ru" class="form-control @error('main_image_alt_ru') is-invalid @enderror" required>
                                             @error('main_image_alt_ru')
@@ -236,7 +236,7 @@
                                                 <input type="text" name="bottom_images_alt_ru[]" class="form-control mb-2" placeholder="ALT текст">
                                             </div>
                                             <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('ru')">Добавить новый ALT текст</button>
-                                        </div>
+                                        </div> -->
 
                                         <div class="mb-3">
                                             <label class="form-label">Текст</label>
@@ -256,7 +256,7 @@
                                             <textarea name="description_2_ru" class="form-control summernote"></textarea>
                                         </div>
 
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Мета-заголовок</label>
                                             <input type="text" name="meta_title_ru" class="form-control">
                                         </div>
@@ -264,7 +264,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Мета-описание</label>
                                             <textarea name="meta_description_ru" class="form-control" rows="3"></textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
