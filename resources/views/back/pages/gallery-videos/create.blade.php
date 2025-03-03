@@ -121,7 +121,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Alt Video ALT</label>
                                             <input type="text" name="bottom_video_alt_az" class="form-control @error('bottom_video_alt_az') is-invalid @enderror" value="{{ old('bottom_video_alt_az') }}" required>
                                             @error('bottom_video_alt_az')
@@ -135,7 +135,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Meta Açıqlama</label>
                                             <textarea name="meta_description_az" class="form-control" rows="3">{{ old('meta_description_az') }}</textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- EN Tab -->
@@ -161,7 +161,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Bottom Video ALT</label>
                                             <input type="text" name="bottom_video_alt_en" class="form-control @error('bottom_video_alt_en') is-invalid @enderror" value="{{ old('bottom_video_alt_en') }}" required>
                                             @error('bottom_video_alt_en')
@@ -175,7 +175,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Meta Description</label>
                                             <textarea name="meta_description_en" class="form-control" rows="3">{{ old('meta_description_en') }}</textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
 
                                     <!-- RU Tab -->
@@ -201,7 +201,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">ALT нижнего видео</label>
                                             <input type="text" name="bottom_video_alt_ru" class="form-control @error('bottom_video_alt_ru') is-invalid @enderror" value="{{ old('bottom_video_alt_ru') }}" required>
                                             @error('bottom_video_alt_ru')
@@ -215,7 +215,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">Мета-описание</label>
                                             <textarea name="meta_description_ru" class="form-control" rows="3">{{ old('meta_description_ru') }}</textarea>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
 
