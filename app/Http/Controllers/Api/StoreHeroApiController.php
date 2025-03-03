@@ -25,5 +25,5 @@ class StoreHeroApiController extends Controller
         }
     }
 
-   
+    
 } 
