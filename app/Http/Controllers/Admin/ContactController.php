@@ -51,7 +51,6 @@ class ContactController extends Controller
             'work_hours_image' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
 
-        // Number Image
         if ($request->hasFile('number_image')) {
             $file = $request->file('number_image');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -67,7 +66,6 @@ class ContactController extends Controller
             }
         }
 
-        // Mail Image
         if ($request->hasFile('mail_image')) {
             $file = $request->file('mail_image');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -83,7 +81,6 @@ class ContactController extends Controller
             }
         }
 
-        // Address Image
         if ($request->hasFile('address_image')) {
             $file = $request->file('address_image');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -99,7 +96,6 @@ class ContactController extends Controller
             }
         }
 
-        // Work Hours Image
         if ($request->hasFile('work_hours_image')) {
             $file = $request->file('work_hours_image');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -144,7 +140,6 @@ class ContactController extends Controller
             'work_hours_image' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
 
-        // Number Image
         if ($request->hasFile('number_image')) {
             if ($contact->number_image) {
                 $oldImagePath = public_path($contact->number_image);
@@ -167,7 +162,6 @@ class ContactController extends Controller
             }
         }
 
-        // Mail Image
         if ($request->hasFile('mail_image')) {
             if ($contact->mail_image) {
                 $oldImagePath = public_path($contact->mail_image);
@@ -190,7 +184,6 @@ class ContactController extends Controller
             }
         }
 
-        // Address Image
         if ($request->hasFile('address_image')) {
             if ($contact->address_image) {
                 $oldImagePath = public_path($contact->address_image);
@@ -213,7 +206,6 @@ class ContactController extends Controller
             }
         }
 
-        // Work Hours Image
         if ($request->hasFile('work_hours_image')) {
             if ($contact->work_hours_image) {
                 $oldImagePath = public_path($contact->work_hours_image);
@@ -245,7 +237,6 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         
-        // Delete images if they exist
         if ($contact->number_image) {
             $imagePath = public_path($contact->number_image);
             if (file_exists($imagePath)) {

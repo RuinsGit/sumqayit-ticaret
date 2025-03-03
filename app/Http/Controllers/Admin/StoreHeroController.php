@@ -24,7 +24,7 @@ class StoreHeroController extends Controller
 
     public function store(Request $request)
     {
-        // Check if a StoreHero already exists
+        
         if (StoreHero::count() >= 1) {
             return redirect()->route('back.pages.store-hero.index')
                 ->with('error', 'Hal hazırda mağazalar hero mövcuddur!');
@@ -47,7 +47,7 @@ class StoreHeroController extends Controller
             $file = $request->file('image');
             $destinationPath = public_path('uploads/store-hero');
             
-            // Create directory if it doesn't exist
+            
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
@@ -106,7 +106,7 @@ class StoreHeroController extends Controller
         $data = $request->except('image');
 
         if ($request->hasFile('image')) {
-            // Delete old image
+         
             if ($storeHero->image) {
                 $oldImagePath = public_path($storeHero->image);
                 if (file_exists($oldImagePath)) {
@@ -114,11 +114,11 @@ class StoreHeroController extends Controller
                 }
             }
 
-            // Upload and convert new image
+          
             $file = $request->file('image');
             $destinationPath = public_path('uploads/store-hero');
             
-            // Create directory if it doesn't exist
+            
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }

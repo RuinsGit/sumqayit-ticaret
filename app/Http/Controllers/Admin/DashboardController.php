@@ -17,19 +17,18 @@ class DashboardController extends Controller
     public function index()
     {
         try {
-            // İstatistikleri topla
+           
           
 
-            // Debug için
+
             \Log::info('Statistics:', $statistics);
 
-            // Son eklenen ürünler
+           
             $latest_products = Product::with('category')
                 ->latest()
                 ->take(5)
                 ->get();
             
-            // Son mesajlar
             $latest_messages = ContactForm::latest()
                 ->take(5)
                 ->get();
@@ -39,7 +38,7 @@ class DashboardController extends Controller
         } catch (\Exception $e) {
             \Log::error('Dashboard Error: ' . $e->getMessage());
             
-            // Hata durumunda boş değerlerle dön
+           
            
 
             $latest_products = collect([]);

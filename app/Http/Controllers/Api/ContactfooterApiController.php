@@ -45,7 +45,6 @@ class ContactfooterApiController extends Controller
             'filial_description' => 'nullable|string',
         ]);
 
-        // Resimleri yükle
         $data = $this->uploadImages($request, $data);
 
         $contactfooter = Contactfooter::create($data);
@@ -69,7 +68,6 @@ class ContactfooterApiController extends Controller
             'filial_description' => 'nullable|string',
         ]);
 
-        // Resimleri güncelle
         $data = $this->uploadImages($request, $data, $contactfooter);
 
         $contactfooter->update($data);
@@ -81,7 +79,6 @@ class ContactfooterApiController extends Controller
     {
         $contactfooter = Contactfooter::findOrFail($id);
         
-        // Resimleri sil
         $this->deleteImages($contactfooter);
 
         $contactfooter->delete();
@@ -91,7 +88,6 @@ class ContactfooterApiController extends Controller
 
     private function uploadImages(Request $request, array $data, Contactfooter $contactfooter = null)
     {
-        // Number Image
         if ($request->hasFile('number_image')) {
             if ($contactfooter && $contactfooter->number_image) {
                 $this->deleteFile($contactfooter->number_image);
@@ -99,7 +95,6 @@ class ContactfooterApiController extends Controller
             $data['number_image'] = $this->saveImage($request->file('number_image'));
         }
 
-        // Mail Image
         if ($request->hasFile('mail_image')) {
             if ($contactfooter && $contactfooter->mail_image) {
                 $this->deleteFile($contactfooter->mail_image);
@@ -107,7 +102,6 @@ class ContactfooterApiController extends Controller
             $data['mail_image'] = $this->saveImage($request->file('mail_image'));
         }
 
-        // Address Image
         if ($request->hasFile('address_image')) {
             if ($contactfooter && $contactfooter->address_image) {
                 $this->deleteFile($contactfooter->address_image);

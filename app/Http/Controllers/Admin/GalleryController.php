@@ -50,7 +50,6 @@ class GalleryController extends Controller
                 'meta_description_ru' => 'nullable|string',
             ]);
 
-            // Ana görsel yükleme
             if ($request->hasFile('main_image')) {
                 $file = $request->file('main_image');
                 $destinationPath = public_path('storage/gallery/main');
@@ -71,7 +70,6 @@ class GalleryController extends Controller
                 }
             }
 
-            // Alt görsel yükleme
             if ($request->hasFile('bottom_image')) {
                 $file = $request->file('bottom_image');
                 $destinationPath = public_path('storage/gallery/bottom');
@@ -92,7 +90,6 @@ class GalleryController extends Controller
                 }
             }
             
-            // Çoklu görseller için dizi oluştur
             $multipleImages = [];
             if ($request->hasFile('bottom_images')) {
                 foreach ($request->file('bottom_images') as $key => $file) {
@@ -121,7 +118,6 @@ class GalleryController extends Controller
                 }
             }
 
-            // Galeri oluştur
             Gallery::create([
                 'title_az' => $request->title_az,
                 'title_en' => $request->title_en,

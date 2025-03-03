@@ -96,18 +96,18 @@ class StoreController extends Controller
             'status' => 'required|boolean'
         ]);
 
-        // Kontrol et: En az biri dolu olmalı
+   
         if (empty($request->store_type_id) && empty($request->market_id)) {
             return back()->withErrors(['selection_error' => 'Lütfen bir kategori veya marka seçin.'])->withInput();
         }
 
-        // Her iki değer de doluysa, sadece birini kabul et (bu hatayı önlemeye yönelik)
+      
         $data = $request->all();
         if (!empty($data['store_type_id']) && !empty($data['market_id'])) {
-            $data['market_id'] = null; // Kategori öncelikli kabul ediyoruz
+            $data['market_id'] = null;
         }
 
-        // Handle main images (WebP conversion)
+        
         if ($request->hasFile('image')) {
             $data['image'] = $this->handleImageUpload($request->file('image'), 'main');
         }
@@ -115,7 +115,6 @@ class StoreController extends Controller
             $data['bottom_image'] = $this->handleImageUpload($request->file('bottom_image'), 'bottom');
         }
 
-        // Handle icon images (SVG or WebP)
         $iconFields = ['working_hours_image', 'number_image', 'email_image', 'link_image'];
         foreach ($iconFields as $field) {
             if ($request->hasFile($field)) {
@@ -179,18 +178,18 @@ class StoreController extends Controller
             'status' => 'required|boolean'
         ]);
 
-        // Kontrol et: En az biri dolu olmalı
+       
         if (empty($request->store_type_id) && empty($request->market_id)) {
             return back()->withErrors(['selection_error' => 'Lütfen bir kategori veya marka seçin.'])->withInput();
         }
 
-        // Her iki değer de doluysa, sadece birini kabul et (bu hatayı önlemeye yönelik)
+        
         $data = $request->all();
         if (!empty($data['store_type_id']) && !empty($data['market_id'])) {
-            $data['market_id'] = null; // Kategori öncelikli kabul ediyoruz
+            $data['market_id'] = null; 
         }
 
-        // Handle main images (WebP conversion)
+        
         if ($request->hasFile('image')) {
             if ($store->image) {
                 $oldPath = public_path($store->image);
@@ -210,7 +209,7 @@ class StoreController extends Controller
             $data['bottom_image'] = $this->handleImageUpload($request->file('bottom_image'), 'bottom');
         }
 
-        // Handle icon images (SVG or WebP)
+      
         $iconFields = ['working_hours_image', 'number_image', 'email_image', 'link_image'];
         foreach ($iconFields as $field) {
             if ($request->hasFile($field)) {
@@ -235,7 +234,7 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
-        // Delete all associated images
+       
         $imageFields = ['image', 'bottom_image', 'working_hours_image', 'number_image', 'email_image', 'link_image'];
         foreach ($imageFields as $field) {
             if ($store->$field) {

@@ -50,7 +50,6 @@ class GalleryVideoController extends Controller
                 'meta_description_ru' => 'nullable|string',
             ]);
 
-            // Ana video yükleme
             if ($request->hasFile('main_video')) {
                 $mainVideo = $request->file('main_video');
                 $mainVideoName = time() . '_' . $mainVideo->getClientOriginalName();
@@ -58,7 +57,6 @@ class GalleryVideoController extends Controller
                 $mainVideoPath = 'uploads/gallery-videos/main/' . $mainVideoName;
             }
 
-            // Ana video thumbnail yükleme ve WebP dönüşümü
             if ($request->hasFile('main_video_thumbnail')) {
                 $mainThumbnail = $request->file('main_video_thumbnail');
                 $originalFileName = pathinfo($mainThumbnail->getClientOriginalName(), PATHINFO_FILENAME);
@@ -77,7 +75,6 @@ class GalleryVideoController extends Controller
                 }
             }
 
-            // Alt video yükleme
             if ($request->hasFile('bottom_video')) {
                 $bottomVideo = $request->file('bottom_video');
                 $bottomVideoName = time() . '_' . $bottomVideo->getClientOriginalName();
@@ -85,7 +82,6 @@ class GalleryVideoController extends Controller
                 $bottomVideoPath = 'uploads/gallery-videos/bottom/' . $bottomVideoName;
             }
 
-            // Alt video thumbnail yükleme ve WebP dönüşümü
             if ($request->hasFile('bottom_video_thumbnail')) {
                 $bottomThumbnail = $request->file('bottom_video_thumbnail');
                 $originalFileName = pathinfo($bottomThumbnail->getClientOriginalName(), PATHINFO_FILENAME);
@@ -101,14 +97,12 @@ class GalleryVideoController extends Controller
                 }
             }
 
-            // Çoklu videolar için dizi oluştur
             $multipleVideos = [];
             if ($request->hasFile('videos')) {
                 foreach ($request->file('videos') as $key => $video) {
                     $videoName = time() . '_' . $key . '_' . $video->getClientOriginalName();
                     $video->move(public_path('uploads/gallery-videos/multiple'), $videoName);
                     
-                    // Video thumbnail ve WebP dönüşümü
                     $thumbnail = $request->file('videos_thumbnail')[$key];
                     $originalFileName = pathinfo($thumbnail->getClientOriginalName(), PATHINFO_FILENAME);
                     $thumbnailName = time() . '_thumb_' . $key . '_' . $originalFileName . '.webp';
@@ -130,13 +124,11 @@ class GalleryVideoController extends Controller
                     }
                 }
             }
-
-            // Slugları oluştur
+                
             $slugAz = str()->slug($request->title_az);
             $slugEn = str()->slug($request->title_en);
             $slugRu = str()->slug($request->title_ru);
 
-            // Gallery Video oluştur
             GalleryVideo::create([
                 'title_az' => $request->title_az,
                 'title_en' => $request->title_en,
@@ -198,7 +190,6 @@ class GalleryVideoController extends Controller
                 'bottom_video_alt_ru' => 'nullable',
             ]);
 
-            // Ana video güncelleme
             if ($request->hasFile('main_video')) {
                 if ($galleryVideo->main_video && file_exists(public_path($galleryVideo->main_video))) {
                     unlink(public_path($galleryVideo->main_video));
@@ -209,7 +200,6 @@ class GalleryVideoController extends Controller
                 $galleryVideo->main_video = 'uploads/gallery-videos/main/' . $mainVideoName;
             }
 
-            // Ana video thumbnail güncelleme ve WebP dönüşümü
             if ($request->hasFile('main_video_thumbnail')) {
                 if ($galleryVideo->main_video_thumbnail && file_exists(public_path($galleryVideo->main_video_thumbnail))) {
                     unlink(public_path($galleryVideo->main_video_thumbnail));
@@ -228,7 +218,6 @@ class GalleryVideoController extends Controller
                 }
             }
 
-            // Alt video güncelleme
             if ($request->hasFile('bottom_video')) {
                 if ($galleryVideo->bottom_video && file_exists(public_path($galleryVideo->bottom_video))) {
                     unlink(public_path($galleryVideo->bottom_video));
@@ -239,7 +228,7 @@ class GalleryVideoController extends Controller
                 $galleryVideo->bottom_video = 'uploads/gallery-videos/bottom/' . $bottomVideoName;
             }
 
-            // Alt video thumbnail güncelleme ve WebP dönüşümü
+            
             if ($request->hasFile('bottom_video_thumbnail')) {
                 if ($galleryVideo->bottom_video_thumbnail && file_exists(public_path($galleryVideo->bottom_video_thumbnail))) {
                     unlink(public_path($galleryVideo->bottom_video_thumbnail));
@@ -258,14 +247,14 @@ class GalleryVideoController extends Controller
                 }
             }
 
-            // Multiple videos işlemleri
+            
             $multipleVideos = [];
 
-            // Mevcut videoları kontrol et
+            
             if ($request->has('existing_videos')) {
                 $existingVideoUrls = $request->existing_videos;
                 
-                // Silinmiş videoları bul ve dosyaları sil
+               
                 foreach ($galleryVideo->multiple_videos as $currentVideo) {
                     if (!in_array($currentVideo['video'], $existingVideoUrls)) {
                         if (file_exists(public_path($currentVideo['video']))) {
@@ -277,7 +266,7 @@ class GalleryVideoController extends Controller
                     }
                 }
 
-                // Kalan videoları yeni listeye ekle
+                
                 foreach ($request->existing_videos as $key => $video) {
                     if (!empty($video)) {
                         $oldVideo = collect($galleryVideo->multiple_videos)->firstWhere('video', $video);
@@ -294,7 +283,7 @@ class GalleryVideoController extends Controller
                 }
             }
 
-            // Yeni videolar ekle
+         
             if ($request->hasFile('videos')) {
                 foreach ($request->file('videos') as $key => $video) {
                     $videoName = time() . '_' . $key . '_' . $video->getClientOriginalName();
@@ -325,12 +314,12 @@ class GalleryVideoController extends Controller
                 }
             }
 
-            // Multiple videos'u güncelle
+           
             if (!empty($multipleVideos)) {
                 $galleryVideo->multiple_videos = $multipleVideos;
             }
 
-            // Temel alanları güncelle
+           
             $galleryVideo->title_az = $request->title_az;
             $galleryVideo->title_en = $request->title_en;
             $galleryVideo->title_ru = $request->title_ru;
@@ -344,7 +333,7 @@ class GalleryVideoController extends Controller
             $galleryVideo->bottom_video_alt_en = $request->bottom_video_alt_en;
             $galleryVideo->bottom_video_alt_ru = $request->bottom_video_alt_ru;
 
-            // Meta alanlarını güncelle
+           
             if ($request->filled('meta_title_az')) $galleryVideo->meta_title_az = $request->meta_title_az;
             if ($request->filled('meta_title_en')) $galleryVideo->meta_title_en = $request->meta_title_en;
             if ($request->filled('meta_title_ru')) $galleryVideo->meta_title_ru = $request->meta_title_ru;
@@ -352,7 +341,7 @@ class GalleryVideoController extends Controller
             if ($request->filled('meta_description_en')) $galleryVideo->meta_description_en = $request->meta_description_en;
             if ($request->filled('meta_description_ru')) $galleryVideo->meta_description_ru = $request->meta_description_ru;
 
-            // Değişiklikleri kaydet
+            
             if (!$galleryVideo->save()) {
                 throw new \Exception('Güncelleme işlemi başarısız oldu.');
             }
@@ -375,7 +364,7 @@ class GalleryVideoController extends Controller
     public function destroy(GalleryVideo $galleryVideo)
     {
         try {
-            // Tüm videoları ve thumbnailları sil
+            
             if ($galleryVideo->main_video && file_exists(public_path($galleryVideo->main_video))) {
                 unlink(public_path($galleryVideo->main_video));
             }

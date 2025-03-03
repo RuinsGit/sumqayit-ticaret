@@ -52,7 +52,7 @@ class LogoController extends Controller
 
         $logo = new Logo();
 
-        // Logo 1 için dosya yükleme
+       
         if ($request->hasFile('logo_1_image')) {
             $image = $request->file('logo_1_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -60,7 +60,7 @@ class LogoController extends Controller
             $logo->logo_1_image = 'uploads/logos/' . $imageName;
         }
 
-        // Logo 2 için dosya yükleme
+        
         if ($request->hasFile('logo_2_image')) {
             $image = $request->file('logo_2_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
@@ -68,7 +68,7 @@ class LogoController extends Controller
             $logo->logo_2_image = 'uploads/logos/' . $imageName;
         }
 
-        // Diğer alanları kaydet
+        
         $logo->logo_alt1_az = $request->logo_alt1_az;
         $logo->logo_alt1_en = $request->logo_alt1_en;
         $logo->logo_alt1_ru = $request->logo_alt1_ru;
@@ -114,35 +114,35 @@ class LogoController extends Controller
 
         $logo = Logo::findOrFail($id);
 
-        // Logo 1 için dosya güncelleme
+        
         if ($request->hasFile('logo_1_image')) {
-            // Eski dosyayı sil
+            
             if ($logo->logo_1_image && File::exists(public_path($logo->logo_1_image))) {
                 File::delete(public_path($logo->logo_1_image));
             }
 
-            // Yeni dosyayı yükle
+          
             $image = $request->file('logo_1_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads/logos'), $imageName);
             $logo->logo_1_image = 'uploads/logos/' . $imageName;
         }
 
-        // Logo 2 için dosya güncelleme
+        
         if ($request->hasFile('logo_2_image')) {
-            // Eski dosyayı sil
+            
             if ($logo->logo_2_image && File::exists(public_path($logo->logo_2_image))) {
                 File::delete(public_path($logo->logo_2_image));
             }
 
-            // Yeni dosyayı yükle
+          
             $image = $request->file('logo_2_image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('uploads/logos'), $imageName);
             $logo->logo_2_image = 'uploads/logos/' . $imageName;
         }
 
-        // Diğer alanları güncelle
+      
         $logo->logo_alt1_az = $request->logo_alt1_az;
         $logo->logo_alt1_en = $request->logo_alt1_en;
         $logo->logo_alt1_ru = $request->logo_alt1_ru;
@@ -165,7 +165,7 @@ class LogoController extends Controller
     {
         $logo = Logo::findOrFail($id);
         
-        // Eski dosyayı sil
+       
         if ($logo->logo_1_image && File::exists(public_path($logo->logo_1_image))) {
             File::delete(public_path($logo->logo_1_image));
         }
@@ -183,9 +183,9 @@ class LogoController extends Controller
     {
         $logo = Logo::findOrFail($id);
         if ($logo->status) {
-            $logo->status = null; // Durumu kaldır
+            $logo->status = null; 
         } else {
-            $logo->status = 1; // Durumu aktif yap
+            $logo->status = 1; 
         }
         $logo->save();
 

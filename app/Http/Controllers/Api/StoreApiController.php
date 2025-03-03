@@ -51,7 +51,6 @@ class StoreApiController extends Controller
             'status' => 'required|boolean'
         ]);
 
-        // Handle image uploads
         $data = $this->uploadImages($request, $data);
 
         $store = Store::create($data);

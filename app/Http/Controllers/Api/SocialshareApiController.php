@@ -15,7 +15,6 @@ class SocialshareApiController extends Controller
     {
         $this->destinationPath = public_path('uploads');
         
-        // Uploads klasörü yoksa oluştur
         if (!file_exists($this->destinationPath)) {
             mkdir($this->destinationPath, 0775, true);
         }

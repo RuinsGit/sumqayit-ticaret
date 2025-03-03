@@ -39,7 +39,7 @@ class HomeCardController extends Controller
             $file = $request->file('image');
             $destinationPath = public_path('uploads/homecard');
             
-            // Create directory if it doesn't exist
+            
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }
@@ -98,7 +98,7 @@ class HomeCardController extends Controller
         $data = $request->except('image');
 
         if ($request->hasFile('image')) {
-            // Delete old image
+            
             if ($homeCard->image) {
                 $oldImagePath = public_path($homeCard->image);
                 if (file_exists($oldImagePath)) {
@@ -106,11 +106,11 @@ class HomeCardController extends Controller
                 }
             }
 
-            // Upload and convert new image
+            
             $file = $request->file('image');
             $destinationPath = public_path('uploads/homecard');
             
-            // Create directory if it doesn't exist
+            
             if (!file_exists($destinationPath)) {
                 mkdir($destinationPath, 0755, true);
             }

@@ -35,13 +35,13 @@ class MarketController extends Controller
         $destinationPath = public_path('uploads/markets');
         $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
-        // SVG dosyası kontrolü
+       
         if ($file->getClientOriginalExtension() === 'svg') {
             $fileName = time() . '_' . $prefix . '_' . $originalFileName . '.svg';
             $file->move($destinationPath, $fileName);
             return 'uploads/markets/' . $fileName;
         } else {
-            // Diğer resim formatları için webp dönüşümü
+            
             $webpFileName = time() . '_' . $prefix . '_' . $originalFileName . '.webp';
 
             if (!file_exists($destinationPath)) {
@@ -79,7 +79,7 @@ class MarketController extends Controller
 
         $data = $request->all();
 
-        // Handle image upload
+       
         if ($request->hasFile('image')) {
             $data['image'] = $this->handleImageUpload($request->file('image'), 'market');
         }
@@ -124,7 +124,7 @@ class MarketController extends Controller
 
         $data = $request->all();
 
-        // Handle image upload
+        
         if ($request->hasFile('image')) {
             if ($market->image) {
                 $oldPath = public_path($market->image);
@@ -146,7 +146,7 @@ class MarketController extends Controller
      */
     public function destroy(Market $market)
     {
-        // Delete image
+     
         if ($market->image) {
             $path = public_path($market->image);
             if (file_exists($path)) {

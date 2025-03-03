@@ -9,6 +9,6 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('back.pages.index'); // back/pages/index.blade.php dosyasını döndür
+        return view('back.pages.index'); 
     }
 } 

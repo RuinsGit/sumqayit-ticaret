@@ -9,18 +9,14 @@ use Illuminate\Http\Request;
 
 class MarketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $markets = Market::all();
         return MarketResource::collection($markets);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -43,17 +39,12 @@ class MarketController extends Controller
         return new MarketResource($market);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Market $market)
     {
         return new MarketResource($market);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
     public function update(Request $request, Market $market)
     {
         $validated = $request->validate([
@@ -79,9 +70,7 @@ class MarketController extends Controller
         return new MarketResource($market);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(Market $market)
     {
         if ($market->image && file_exists(public_path($market->image))) {
@@ -93,21 +82,17 @@ class MarketController extends Controller
         return response()->json(['message' => 'Market successfully deleted.'], 200);
     }
 
-    /**
-     * Handle image upload and conversion to WebP if necessary.
-     */
+   
     protected function handleImageUpload($file, $prefix = '')
     {
         $destinationPath = public_path('uploads/markets');
         $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
-        // Check for SVG files
         if ($file->getClientOriginalExtension() === 'svg') {
             $fileName = time() . '_' . $prefix . '_' . $originalFileName . '.svg';
             $file->move($destinationPath, $fileName);
             return 'uploads/markets/' . $fileName;
         } else {
-            // Convert other images to WebP
             $webpFileName = time() . '_' . $prefix . '_' . $originalFileName . '.webp';
 
             if (!file_exists($destinationPath)) {

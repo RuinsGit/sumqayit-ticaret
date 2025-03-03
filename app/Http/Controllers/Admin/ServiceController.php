@@ -35,19 +35,19 @@ class ServiceController extends Controller
 
         $data = $request->all();
 
-        // Ana resim işleme
+       
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $destinationPath = public_path('uploads/services');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             
-            // SVG faylı yoxlanışı
+            
             if ($file->getClientOriginalExtension() === 'svg') {
                 $fileName = time() . '_' . $originalFileName . '.svg';
                 $file->move($destinationPath, $fileName);
                 $data['image'] = 'uploads/services/' . $fileName;
             } else {
-                // Digər şəkil formatları üçün webp çevirmə
+                
                 $webpFileName = time() . '_' . $originalFileName . '.webp';
 
                 if (!file_exists($destinationPath)) {
@@ -65,19 +65,19 @@ class ServiceController extends Controller
             }
         }
 
-        // Alt resim işleme
+    
         if ($request->hasFile('bottom_image')) {
             $file = $request->file('bottom_image');
             $destinationPath = public_path('uploads/services');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             
-            // SVG faylı yoxlanışı
+            
             if ($file->getClientOriginalExtension() === 'svg') {
                 $fileName = time() . '_bottom_' . $originalFileName . '.svg';
                 $file->move($destinationPath, $fileName);
                 $data['bottom_image'] = 'uploads/services/' . $fileName;
             } else {
-                // Digər şəkil formatları üçün webp çevirmə
+                
                 $webpFileName = time() . '_bottom_' . $originalFileName . '.webp';
 
                 if (!file_exists($destinationPath)) {
@@ -121,7 +121,7 @@ class ServiceController extends Controller
 
         $data = $request->all();
 
-        // Ana resim işleme
+       
         if ($request->hasFile('image')) {
             if ($service->image && File::exists(public_path($service->image))) {
                 File::delete(public_path($service->image));
@@ -131,13 +131,13 @@ class ServiceController extends Controller
             $destinationPath = public_path('uploads/services');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             
-            // SVG faylı yoxlanışı
+         
             if ($file->getClientOriginalExtension() === 'svg') {
                 $fileName = time() . '_' . $originalFileName . '.svg';
                 $file->move($destinationPath, $fileName);
                 $data['image'] = 'uploads/services/' . $fileName;
             } else {
-                // Digər şəkil formatları üçün webp çevirmə
+               
                 $webpFileName = time() . '_' . $originalFileName . '.webp';
 
                 if (!file_exists($destinationPath)) {
@@ -155,7 +155,7 @@ class ServiceController extends Controller
             }
         }
 
-        // Alt resim işleme
+        
         if ($request->hasFile('bottom_image')) {
             if ($service->bottom_image && File::exists(public_path($service->bottom_image))) {
                 File::delete(public_path($service->bottom_image));
@@ -165,13 +165,13 @@ class ServiceController extends Controller
             $destinationPath = public_path('uploads/services');
             $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
             
-            // SVG faylı yoxlanışı
+         
             if ($file->getClientOriginalExtension() === 'svg') {
                 $fileName = time() . '_bottom_' . $originalFileName . '.svg';
                 $file->move($destinationPath, $fileName);
                 $data['bottom_image'] = 'uploads/services/' . $fileName;
             } else {
-                // Digər şəkil formatları üçün webp çevirmə
+                
                 $webpFileName = time() . '_bottom_' . $originalFileName . '.webp';
 
                 if (!file_exists($destinationPath)) {

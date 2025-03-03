@@ -31,13 +31,11 @@ class ContactfooterController extends Controller
     {
         $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
 
-        // SVG dosyası kontrolü
         if ($file->getClientOriginalExtension() === 'svg') {
             $fileName = time() . '_' . $prefix . '_' . $originalFileName . '.svg';
             $file->move($this->destinationPath, $fileName);
             return 'uploads/' . $fileName;
         } else {
-            // Diğer resim formatları için webp dönüşümü
             $webpFileName = time() . '_' . $prefix . '_' . $originalFileName . '.webp';
 
             if (!file_exists($this->destinationPath)) {
@@ -150,7 +148,7 @@ class ContactfooterController extends Controller
         ]);
 
         try {
-            // Number Image
+            
             if ($request->hasFile('number_image')) {
                 $file = $request->file('number_image');
                 if (!in_array($file->getMimeType(), $this->allowedMimeTypes)) {
@@ -167,7 +165,6 @@ class ContactfooterController extends Controller
                 $data['number_image'] = $this->handleImageUpload($file, 'number');
             }
 
-            // Mail Image
             if ($request->hasFile('mail_image')) {
                 $file = $request->file('mail_image');
                 if (!in_array($file->getMimeType(), $this->allowedMimeTypes)) {
@@ -184,7 +181,6 @@ class ContactfooterController extends Controller
                 $data['mail_image'] = $this->handleImageUpload($file, 'mail');
             }
 
-            // Address Image
             if ($request->hasFile('address_image')) {
                 $file = $request->file('address_image');
                 if (!in_array($file->getMimeType(), $this->allowedMimeTypes)) {
@@ -213,7 +209,6 @@ class ContactfooterController extends Controller
     {
         $contactfooter = Contactfooter::findOrFail($id);
         
-        // Delete images if they exist
         if ($contactfooter->number_image) {
             $imagePath = public_path($contactfooter->number_image);
             if (file_exists($imagePath)) {

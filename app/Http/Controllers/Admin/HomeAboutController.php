@@ -20,7 +20,7 @@ class HomeAboutController extends Controller
     {
         $homeAbouts = HomeAbout::all();
         
-        // Eğer veritabanında bir kayıt varsa, kullanıcıya mesaj göster
+            
         if ($homeAbouts->count() >= 1) {
             return view('back.pages.home-about.index', compact('homeAbouts'))
                 ->with('info', 'Hal-hazırda 1 Home About mövcuddur.');
@@ -36,7 +36,7 @@ class HomeAboutController extends Controller
 
     public function store(Request $request)
     {
-        // Veritabanında zaten bir kayıt var mı kontrol et
+            
         if (HomeAbout::count() >= 1) {
             return redirect()->route('back.pages.home-about.index')
                 ->with('error', 'Hal-hazırda 1 Home About mövcuddur.');
@@ -67,12 +67,11 @@ class HomeAboutController extends Controller
             'images_alt_ru.*' => 'nullable|string|max:255',
         ]);
 
-        // Dizin kontrolü ve oluşturma
+       
         if (!file_exists($this->destinationPath)) {
             mkdir($this->destinationPath, 0755, true);
         }
 
-        // Resimlerin işlenmesi
         $images = [];
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $key => $file) {
@@ -135,11 +134,10 @@ class HomeAboutController extends Controller
             'images_alt_ru.*' => 'nullable|string|max:255',
         ]);
 
-        // Yeni resimler yüklendiyse
+
         if ($request->hasFile('images')) {
             $images = [];
             
-            // Eski resimleri sil
             if ($homeAbout->images) {
                 $oldImages = json_decode($homeAbout->images);
                 foreach ($oldImages as $oldImage) {
@@ -150,7 +148,6 @@ class HomeAboutController extends Controller
                 }
             }
 
-            // Yeni resimleri kaydet
             foreach ($request->file('images') as $key => $file) {
                 if ($file->isValid()) {
                     $originalFileName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -169,12 +166,10 @@ class HomeAboutController extends Controller
             $data['images'] = json_encode($images);
         }
 
-        // Alt textleri güncelle
         $data['images_alt_az'] = json_encode(array_values($request->images_alt_az ?? []));
         $data['images_alt_en'] = json_encode(array_values($request->images_alt_en ?? []));
         $data['images_alt_ru'] = json_encode(array_values($request->images_alt_ru ?? []));
 
-        // Yeni description alanlarını güncelle
         $data['description_az'] = $request->description_az;
         $data['description_en'] = $request->description_en;
         $data['description_ru'] = $request->description_ru;
@@ -188,7 +183,6 @@ class HomeAboutController extends Controller
     {
         $homeAbout = HomeAbout::findOrFail($id);
 
-        // Resimleri sil
         if ($homeAbout->images) {
             $images = json_decode($homeAbout->images);
             foreach ($images as $image) {
