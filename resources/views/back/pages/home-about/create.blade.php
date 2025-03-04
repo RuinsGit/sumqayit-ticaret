@@ -31,7 +31,7 @@
                             <div class="mb-4">
                                 <label class="form-label">Şəkillər (302x362)</label>
                                 <div id="images-container">
-                                    <div class="mb-4">
+                                    <div class="mb-4 image-item">
                                         <div class="input-group mb-2">
                                             <input type="file" name="images[]" class="form-control" required>
                                             <div class="input-group-append">
@@ -191,7 +191,7 @@
         
         // Create main image input group
         const wrapper = document.createElement('div');
-        wrapper.className = 'mb-4';
+        wrapper.className = 'mb-4 image-item';
 
         // Image input
         const imageGroup = document.createElement('div');
@@ -201,6 +201,7 @@
         input.type = 'file';
         input.name = 'images[]';
         input.className = 'form-control';
+        input.required = true;
 
         const buttonDiv = document.createElement('div');
         buttonDiv.className = 'input-group-append';
@@ -227,6 +228,7 @@
         inputAz.type = 'text';
         inputAz.name = 'images_alt_az[]';
         inputAz.className = 'form-control';
+        inputAz.required = true;
 
         // EN
         const labelEn = document.createElement('label');
@@ -236,6 +238,7 @@
         inputEn.type = 'text';
         inputEn.name = 'images_alt_en[]';
         inputEn.className = 'form-control';
+        inputEn.required = true;
 
         // RU
         const labelRu = document.createElement('label');
@@ -245,6 +248,7 @@
         inputRu.type = 'text';
         inputRu.name = 'images_alt_ru[]';
         inputRu.className = 'form-control';
+        inputRu.required = true;
 
         altTextsDiv.appendChild(labelAz);
         altTextsDiv.appendChild(inputAz);
@@ -259,9 +263,11 @@
     }
 
     function removeImage(button) {
-        const wrapper = button.closest('.mb-4');
-        if (wrapper) {
+        const wrapper = button.closest('.image-item');
+        if (wrapper && document.querySelectorAll('.image-item').length > 1) {
             wrapper.remove();
+        } else {
+            alert('En az bir resim gereklidir!');
         }
     }
 </script>

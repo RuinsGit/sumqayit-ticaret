@@ -165,7 +165,7 @@ Route::prefix('admin')->group(function () {
             // Store Hero
             Route::resource('store-hero', StoreHeroController::class);
 
-             // Social Media routes
+             
              Route::get('social', [SocialMediaController::class, 'index'])->name('social.index');
              Route::get('social/create', [SocialMediaController::class, 'create'])->name('social.create');
              Route::post('social', [SocialMediaController::class, 'store'])->name('social.store');
@@ -175,7 +175,7 @@ Route::prefix('admin')->group(function () {
              Route::post('social/order', [SocialMediaController::class, 'order'])->name('social.order');
              Route::post('social/toggle-status/{id}', [SocialMediaController::class, 'toggleStatus'])->name('social.toggle-status');
 
-              // Social Share routes
+             
             Route::get('socialshare', [SocialshareController::class, 'index'])->name('socialshare.index');
             Route::get('socialshare/create', [SocialshareController::class, 'create'])->name('socialshare.create');
             Route::post('socialshare', [SocialshareController::class, 'store'])->name('socialshare.store');

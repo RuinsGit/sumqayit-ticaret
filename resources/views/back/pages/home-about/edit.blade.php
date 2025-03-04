@@ -34,13 +34,20 @@
                                 <div id="images-container">
                                     @if($homeAbout->images)
                                         @foreach(json_decode($homeAbout->images) as $key => $image)
-                                            <div class="mb-4">
+                                            <div class="mb-4 image-item">
+                                                <input type="hidden" name="existing_images[]" value="{{ $image }}">
                                                 <div class="input-group mb-2">
-                                                    <img src="{{ asset($image) }}" alt="Current Image" width="50" class="me-2">
-                                                    <input type="file" name="images[]" class="form-control">
-                                                    <div class="input-group-append">
-                                                        <button type="button" class="btn btn-danger" onclick="removeImage(this)">Sil</button>
+                                                    <img src="{{ asset($image) }}" alt="Current Image" width="100" class="me-2">
+                                                    <div class="form-check form-switch mt-2 me-3">
+                                                        <input class="form-check-input" type="checkbox" name="delete_images[]" value="{{ $key }}">
+                                                        <label class="form-check-label">Bu şəkili sil</label>
                                                     </div>
+                                                    <div class="input-group-append">
+                                                        <button type="button" class="btn btn-primary" onclick="replaceImage(this)">Dəyişdir</button>
+                                                    </div>
+                                                </div>
+                                                <div class="replacement-input d-none">
+                                                    <input type="file" name="replacement_images[{{ $key }}]" class="form-control mb-2">
                                                 </div>
                                                 <div class="mt-2">
                                                     <label class="form-label">Alt Text (AZ)</label>
@@ -57,23 +64,6 @@
                                                 </div>
                                             </div>
                                         @endforeach
-                                    @else
-                                        <div class="mb-4">
-                                            <div class="input-group mb-2">
-                                                <input type="file" name="images[]" class="form-control">
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-danger" onclick="removeImage(this)">Sil</button>
-                                                </div>
-                                            </div>
-                                            <div class="mt-2">
-                                                <label class="form-label">Alt Text (AZ)</label>
-                                                <input type="text" name="images_alt_az[]" class="form-control">
-                                                <label class="form-label mt-2">Alt Text (EN)</label>
-                                                <input type="text" name="images_alt_en[]" class="form-control">
-                                                <label class="form-label mt-2">Alt Text (RU)</label>
-                                                <input type="text" name="images_alt_ru[]" class="form-control">
-                                            </div>
-                                        </div>
                                     @endif
                                 </div>
                                 <button type="button" class="btn btn-warning mt-2" onclick="addImage()">Yeni Şəkil Əlavə Et</button>
@@ -211,7 +201,7 @@
         
         // Create main image input group
         const wrapper = document.createElement('div');
-        wrapper.className = 'mb-4';
+        wrapper.className = 'mb-4 image-item new-image';
 
         // Image input
         const imageGroup = document.createElement('div');
@@ -219,8 +209,9 @@
         
         const input = document.createElement('input');
         input.type = 'file';
-        input.name = 'images[]';
+        input.name = 'new_images[]';
         input.className = 'form-control';
+        input.required = true;
 
         const buttonDiv = document.createElement('div');
         buttonDiv.className = 'input-group-append';
@@ -245,7 +236,7 @@
         labelAz.textContent = 'Alt Text (AZ)';
         const inputAz = document.createElement('input');
         inputAz.type = 'text';
-        inputAz.name = 'images_alt_az[]';
+        inputAz.name = 'new_images_alt_az[]';
         inputAz.className = 'form-control';
 
         // EN
@@ -254,7 +245,7 @@
         labelEn.textContent = 'Alt Text (EN)';
         const inputEn = document.createElement('input');
         inputEn.type = 'text';
-        inputEn.name = 'images_alt_en[]';
+        inputEn.name = 'new_images_alt_en[]';
         inputEn.className = 'form-control';
 
         // RU
@@ -263,7 +254,7 @@
         labelRu.textContent = 'Alt Text (RU)';
         const inputRu = document.createElement('input');
         inputRu.type = 'text';
-        inputRu.name = 'images_alt_ru[]';
+        inputRu.name = 'new_images_alt_ru[]';
         inputRu.className = 'form-control';
 
         altTextsDiv.appendChild(labelAz);
@@ -279,9 +270,34 @@
     }
 
     function removeImage(button) {
-        const wrapper = button.closest('.mb-4');
+        const wrapper = button.closest('.image-item');
         if (wrapper) {
             wrapper.remove();
+        }
+    }
+    
+    function replaceImage(button) {
+        const wrapper = button.closest('.image-item');
+        const replacementInput = wrapper.querySelector('.replacement-input');
+        
+        if (replacementInput) {
+            replacementInput.classList.toggle('d-none');
+            
+            if (button.textContent === 'Dəyişdir') {
+                button.textContent = 'Ləğv et';
+                button.classList.remove('btn-primary');
+                button.classList.add('btn-secondary');
+            } else {
+                button.textContent = 'Dəyişdir';
+                button.classList.remove('btn-secondary');
+                button.classList.add('btn-primary');
+                
+                // Reset the file input
+                const fileInput = replacementInput.querySelector('input[type="file"]');
+                if (fileInput) {
+                    fileInput.value = '';
+                }
+            }
         }
     }
 </script>
