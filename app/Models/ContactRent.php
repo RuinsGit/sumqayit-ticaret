@@ -9,9 +9,6 @@ class ContactRent extends Model
 {
     use HasFactory;
     
-    const STATUS_NEW = 'new';
-    const STATUS_VIEWED = 'viewed';
-
     protected $table = 'contact_rent';
 
     protected $fillable = [
