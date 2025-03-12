@@ -47,7 +47,7 @@ class ContactRentApiController extends Controller
 
             try {
                 
-                Mail::to('museyibli.ruhin@gmail.com')->send(new ContactRentMail($contact));
+                Mail::to('info@stm-asc.az')->send(new ContactRentMail($contact));
 
                 DB::commit();
 
