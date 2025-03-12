@@ -29,7 +29,7 @@
                                 @method('PUT')
 
                                 <!-- Video Upload Section -->
-                                <div class="row mb-4">
+                                <!-- <div class="row mb-4">
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label class="form-label">Əsas Video</label>
@@ -87,7 +87,7 @@
                                             </div>
                                             @endif
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label class="form-label">Əlavə Videolar</label>
@@ -174,13 +174,13 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Əsas Video ALT</label>
                                             <input type="text" name="main_video_alt_az" class="form-control @error('main_video_alt_az') is-invalid @enderror" value="{{ old('main_video_alt_az', $galleryVideo->main_video_alt_az) }}" required>
                                             @error('main_video_alt_az')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="mb-3">
                                             <label class="form-label">Alt Video ALT</label>
                                             <input type="text" name="bottom_video_alt_az" class="form-control @error('bottom_video_alt_az') is-invalid @enderror" value="{{ old('bottom_video_alt_az', $galleryVideo->bottom_video_alt_az) }}" required>
@@ -214,13 +214,13 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">Main Video ALT</label>
                                             <input type="text" name="main_video_alt_en" class="form-control @error('main_video_alt_en') is-invalid @enderror" value="{{ old('main_video_alt_en', $galleryVideo->main_video_alt_en) }}" required>
                                             @error('main_video_alt_en')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="mb-3">
                                             <label class="form-label">Bottom Video ALT</label>
                                             <input type="text" name="bottom_video_alt_en" class="form-control @error('bottom_video_alt_en') is-invalid @enderror" value="{{ old('bottom_video_alt_en', $galleryVideo->bottom_video_alt_en) }}" required>
@@ -254,13 +254,13 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="mb-3">
+                                        <!-- <div class="mb-3">
                                             <label class="form-label">ALT главного видео</label>
                                             <input type="text" name="main_video_alt_ru" class="form-control @error('main_video_alt_ru') is-invalid @enderror" value="{{ old('main_video_alt_ru', $galleryVideo->main_video_alt_ru) }}" required>
                                             @error('main_video_alt_ru')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="mb-3">
                                             <label class="form-label">ALT нижнего видео</label>
                                             <input type="text" name="bottom_video_alt_ru" class="form-control @error('bottom_video_alt_ru') is-invalid @enderror" value="{{ old('bottom_video_alt_ru', $galleryVideo->bottom_video_alt_ru) }}" required>

@@ -27,13 +27,13 @@ class GalleryVideoController extends Controller
                 'title_az' => 'required|string|max:255',
                 'title_en' => 'required|string|max:255',
                 'title_ru' => 'required|string|max:255',
-                'main_video' => 'required|file|mimetypes:video/mp4,video/quicktime |max:999999999',
-                'main_video_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif',
+                'main_video' => 'nullable|file|mimetypes:video/mp4,video/quicktime |max:999999999',
+                'main_video_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif',
                 'main_video_alt_az' => 'nullable|string|max:255',
                 'main_video_alt_en' => 'nullable|string|max:255',
                 'main_video_alt_ru' => 'nullable|string|max:255',
-                'bottom_video' => 'required|file|mimetypes:video/mp4,video/quicktime |max:999999999',
-                'bottom_video_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif',
+                'bottom_video' => 'nullable|file|mimetypes:video/mp4,video/quicktime |max:999999999',
+                'bottom_video_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif',
                 'bottom_video_alt_az' => 'nullable|string|max:255',
                 'bottom_video_alt_en' => 'nullable|string|max:255',
                 'bottom_video_alt_ru' => 'nullable|string|max:255',
@@ -49,6 +49,12 @@ class GalleryVideoController extends Controller
                 'meta_description_en' => 'nullable|string',
                 'meta_description_ru' => 'nullable|string',
             ]);
+
+            // Değişkenleri tanımla (varsayılan olarak null)
+            $mainVideoPath = null;
+            $mainThumbnailPath = null;
+            $bottomVideoPath = null;
+            $bottomThumbnailPath = null;
 
             if ($request->hasFile('main_video')) {
                 $mainVideo = $request->file('main_video');
@@ -190,6 +196,7 @@ class GalleryVideoController extends Controller
                 'bottom_video_alt_ru' => 'nullable',
             ]);
 
+            // Main video işlemleri
             if ($request->hasFile('main_video')) {
                 if ($galleryVideo->main_video && file_exists(public_path($galleryVideo->main_video))) {
                     unlink(public_path($galleryVideo->main_video));
@@ -200,6 +207,7 @@ class GalleryVideoController extends Controller
                 $galleryVideo->main_video = 'uploads/gallery-videos/main/' . $mainVideoName;
             }
 
+            // Main video thumbnail işlemleri
             if ($request->hasFile('main_video_thumbnail')) {
                 if ($galleryVideo->main_video_thumbnail && file_exists(public_path($galleryVideo->main_video_thumbnail))) {
                     unlink(public_path($galleryVideo->main_video_thumbnail));
@@ -212,12 +220,16 @@ class GalleryVideoController extends Controller
                 $webpPath = public_path('uploads/gallery-videos/thumbnails/' . $mainThumbnailName);
                 
                 if ($imageResource) {
+                    if (!file_exists(public_path('uploads/gallery-videos/thumbnails'))) {
+                        mkdir(public_path('uploads/gallery-videos/thumbnails'), 0777, true);
+                    }
                     imagewebp($imageResource, $webpPath, 80);
                     imagedestroy($imageResource);
                     $galleryVideo->main_video_thumbnail = 'uploads/gallery-videos/thumbnails/' . $mainThumbnailName;
                 }
             }
 
+            // Bottom video işlemleri
             if ($request->hasFile('bottom_video')) {
                 if ($galleryVideo->bottom_video && file_exists(public_path($galleryVideo->bottom_video))) {
                     unlink(public_path($galleryVideo->bottom_video));
@@ -228,7 +240,7 @@ class GalleryVideoController extends Controller
                 $galleryVideo->bottom_video = 'uploads/gallery-videos/bottom/' . $bottomVideoName;
             }
 
-            
+            // Bottom video thumbnail işlemleri
             if ($request->hasFile('bottom_video_thumbnail')) {
                 if ($galleryVideo->bottom_video_thumbnail && file_exists(public_path($galleryVideo->bottom_video_thumbnail))) {
                     unlink(public_path($galleryVideo->bottom_video_thumbnail));
@@ -241,20 +253,20 @@ class GalleryVideoController extends Controller
                 $webpPath = public_path('uploads/gallery-videos/thumbnails/' . $bottomThumbnailName);
                 
                 if ($imageResource) {
+                    if (!file_exists(public_path('uploads/gallery-videos/thumbnails'))) {
+                        mkdir(public_path('uploads/gallery-videos/thumbnails'), 0777, true);
+                    }
                     imagewebp($imageResource, $webpPath, 80);
                     imagedestroy($imageResource);
                     $galleryVideo->bottom_video_thumbnail = 'uploads/gallery-videos/thumbnails/' . $bottomThumbnailName;
                 }
             }
 
-            
             $multipleVideos = [];
 
-            
             if ($request->has('existing_videos')) {
                 $existingVideoUrls = $request->existing_videos;
                 
-               
                 foreach ($galleryVideo->multiple_videos as $currentVideo) {
                     if (!in_array($currentVideo['video'], $existingVideoUrls)) {
                         if (file_exists(public_path($currentVideo['video']))) {
@@ -266,7 +278,6 @@ class GalleryVideoController extends Controller
                     }
                 }
 
-                
                 foreach ($request->existing_videos as $key => $video) {
                     if (!empty($video)) {
                         $oldVideo = collect($galleryVideo->multiple_videos)->firstWhere('video', $video);
@@ -283,7 +294,6 @@ class GalleryVideoController extends Controller
                 }
             }
 
-         
             if ($request->hasFile('videos')) {
                 foreach ($request->file('videos') as $key => $video) {
                     $videoName = time() . '_' . $key . '_' . $video->getClientOriginalName();
@@ -314,12 +324,10 @@ class GalleryVideoController extends Controller
                 }
             }
 
-           
             if (!empty($multipleVideos)) {
                 $galleryVideo->multiple_videos = $multipleVideos;
             }
 
-           
             $galleryVideo->title_az = $request->title_az;
             $galleryVideo->title_en = $request->title_en;
             $galleryVideo->title_ru = $request->title_ru;
@@ -333,7 +341,6 @@ class GalleryVideoController extends Controller
             $galleryVideo->bottom_video_alt_en = $request->bottom_video_alt_en;
             $galleryVideo->bottom_video_alt_ru = $request->bottom_video_alt_ru;
 
-           
             if ($request->filled('meta_title_az')) $galleryVideo->meta_title_az = $request->meta_title_az;
             if ($request->filled('meta_title_en')) $galleryVideo->meta_title_en = $request->meta_title_en;
             if ($request->filled('meta_title_ru')) $galleryVideo->meta_title_ru = $request->meta_title_ru;
@@ -341,7 +348,6 @@ class GalleryVideoController extends Controller
             if ($request->filled('meta_description_en')) $galleryVideo->meta_description_en = $request->meta_description_en;
             if ($request->filled('meta_description_ru')) $galleryVideo->meta_description_ru = $request->meta_description_ru;
 
-            
             if (!$galleryVideo->save()) {
                 throw new \Exception('Güncelleme işlemi başarısız oldu.');
             }

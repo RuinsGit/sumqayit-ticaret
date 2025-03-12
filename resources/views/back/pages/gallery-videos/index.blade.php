@@ -46,10 +46,9 @@
                                     <thead class="table-light">
                                         <tr>
                                             <th scope="col" class="text-center" style="width: 50px;">#</th>
-                                            <th scope="col" class="text-center" style="width: 150px;">Əsas Video</th>
+                                            
                                             <th scope="col">Başlıq</th>
-                                            <th scope="col" class="text-center" style="width: 150px;">Alt Video</th>
-                                            <th scope="col" class="text-center" style="width: 150px;">Əlavə Videolar</th>
+                                            <th scope="col" class="text-center" style="width: 150px;">videolar</th>
                                             <th scope="col" class="text-center" style="width: 120px;">Əməliyyatlar</th>
                                         </tr>
                                     </thead>
@@ -57,34 +56,17 @@
                                         @forelse($galleryVideos as $galleryVideo)
                                             <tr>
                                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td class="text-center">
-                                                    @if($galleryVideo->main_video_thumbnail)
-                                                        <img src="{{ asset($galleryVideo->main_video_thumbnail) }}" 
-                                                             alt="{{ $galleryVideo->main_video_alt_az }}"
-                                                             class="img-thumbnail"
-                                                             style="max-height: 80px;">
-                                                    @else
-                                                        <span class="badge bg-light text-dark">Şəkil yoxdur</span>
-                                                    @endif
-                                                </td>
+
+                                               
+                                               
                                                 <td>
-                                                    <h5 class="mb-1">{{ $galleryVideo->title_az }}</h5>
+                                                    <h5 class="d-flex align-items-center justify-content-center">{{ $galleryVideo->title_az }}</h5>
                                                 </td>
-                                                <td class="text-center">
-                                                    @if($galleryVideo->bottom_video_thumbnail)
-                                                        <img src="{{ asset($galleryVideo->bottom_video_thumbnail) }}" 
-                                                             alt="{{ $galleryVideo->bottom_video_alt_az }}"
-                                                             class="img-thumbnail"
-                                                             style="max-height: 80px;">
-                                                    @else
-                                                        <span class="badge bg-light text-dark">Şəkil yoxdur</span>
-                                                    @endif
-                                                </td>
-                                                <td class="text-center">
+                                                <td class="text-center" style="display: flex; align-items: center; justify-content: center; width: 500px;" >
                                                     @if($galleryVideo->multiple_videos)
-                                                        <div class="avatar-group">
+                                                        <div class="d-flex align-items-center justify-content-center">
                                                             @foreach(array_slice(is_string($galleryVideo->multiple_videos) ? json_decode($galleryVideo->multiple_videos, true) : $galleryVideo->multiple_videos, 0, 3) as $video)
-                                                                <img src="{{ asset($video['thumbnail']) }}" 
+                                                                <img src="{{ asset($video['thumbnail']) }} " 
                                                                      alt="{{ $video['alt_az'] }}"
                                                                      class="img-thumbnail"
                                                                      style="max-height: 50px; margin-right: 5px;">
@@ -97,6 +79,7 @@
                                                         <span class="badge bg-light text-dark">Video yoxdur</span>
                                                     @endif
                                                 </td>
+                                             
                                                 <td class="text-center">
                                                     <div class="d-flex justify-content-center gap-2">
                                                         <a href="{{ route('back.pages.gallery-videos.edit', $galleryVideo->id) }}" 
@@ -133,7 +116,7 @@
 @endsection
 
 @push('css')
-<style>
+<!-- <style>
     .table img {
         object-fit: cover;
         border-radius: 4px;
@@ -143,5 +126,5 @@
         align-items: center;
         justify-content: center;
     }
-</style>
+</style> -->
 @endpush 
