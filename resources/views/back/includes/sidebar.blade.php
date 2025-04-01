@@ -136,7 +136,7 @@
                     <li>
                         <a href="{{ route('back.pages.blog.index') }}">
                             <i class="ri-book-line"></i>
-                            <span>Blog</span>
+                            <span>Yeniliklər</span>
                         </a>
                     </li>
 

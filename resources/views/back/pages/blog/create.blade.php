@@ -1,6 +1,6 @@
 @extends('back.layouts.master')
 
-@section('title', 'Yeni Bloq')
+@section('title', 'Yeni Yenilik')
 
 @section('content')
     <div class="page-content">
@@ -8,11 +8,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Yeni Bloq</h4>
+                        <h4 class="mb-sm-0">Yeni Yenilik</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Ana səhifə</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('back.pages.blog.index') }}">Bloqlar</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('back.pages.blog.index') }}">Yeniliklər</a></li>
                                 <li class="breadcrumb-item active">Yeni</li>
                             </ol>
                         </div>
@@ -32,7 +32,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label class="form-label">Əsas Şəkil (1440x500)</label>
-                                            <input type="file" name="main_image" class="form-control @error('main_image') is-invalid @enderror" required>
+                                            <input type="file" name="main_image" class="form-control @error('main_image') is-invalid @enderror">
                                             @error('main_image')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -82,7 +82,7 @@
                                     <div class="tab-pane active" id="az" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Başlıq</label>
-                                            <input type="text" name="title_az" id="title_az" class="form-control @error('title_az') is-invalid @enderror" required>
+                                            <input type="text" name="title_az" id="title_az" class="form-control @error('title_az') is-invalid @enderror">
                                             @error('title_az')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -95,26 +95,10 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-<!-- 
-                                        <div class="mb-3">
-                                            <label class="form-label">Əsas Şəkil ALT</label>
-                                            <input type="text" name="main_image_alt_az" class="form-control @error('main_image_alt_az') is-invalid @enderror" required>
-                                            @error('main_image_alt_az')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Alt Şəkillər ALT</label>
-                                            <div id="bottom-images-alt-container-az">
-                                                <input type="text" name="bottom_images_alt_az[]" class="form-control mb-2" placeholder="ALT mətni">
-                                            </div>
-                                            <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('az')">Yeni ALT Mətn Əlavə Et</button>
-                                        </div> -->
 
                                         <div class="mb-3">
                                             <label class="form-label">Mətn</label>
-                                            <textarea name="text_az" class="form-control @error('text_az') is-invalid @enderror" rows="5" required></textarea>
+                                            <textarea name="text_az" class="form-control @error('text_az') is-invalid @enderror" rows="5"></textarea>
                                             @error('text_az')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -129,23 +113,13 @@
                                             <label class="form-label">Məzmun 2</label>
                                             <textarea name="description_2_az" class="form-control summernote"></textarea>
                                         </div>
-
-                                        <!-- <div class="mb-3">
-                                            <label class="form-label">Meta Başlıq</label>
-                                            <input type="text" name="meta_title_az" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Meta Məzmun</label>
-                                            <textarea name="meta_description_az" class="form-control" rows="3"></textarea>
-                                        </div> -->
                                     </div>
 
                                     <!-- İngilis dili -->
                                     <div class="tab-pane" id="en" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Title</label>
-                                            <input type="text" name="title_en" id="title_en" class="form-control @error('title_en') is-invalid @enderror" required>
+                                            <input type="text" name="title_en" id="title_en" class="form-control @error('title_en') is-invalid @enderror">
                                             @error('title_en')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -158,26 +132,10 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-<!-- 
-                                        <div class="mb-3">
-                                            <label class="form-label">Main Image ALT</label>
-                                            <input type="text" name="main_image_alt_en" class="form-control @error('main_image_alt_en') is-invalid @enderror" required>
-                                            @error('main_image_alt_en')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Bottom Images ALT</label>
-                                            <div id="bottom-images-alt-container-en">
-                                                <input type="text" name="bottom_images_alt_en[]" class="form-control mb-2" placeholder="ALT text">
-                                            </div>
-                                            <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('en')">Add New ALT Text</button>
-                                        </div> -->
 
                                         <div class="mb-3">
                                             <label class="form-label">Text</label>
-                                            <textarea name="text_en" class="form-control @error('text_en') is-invalid @enderror" rows="5" required></textarea>
+                                            <textarea name="text_en" class="form-control @error('text_en') is-invalid @enderror" rows="5"></textarea>
                                             @error('text_en')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -192,23 +150,13 @@
                                             <label class="form-label">Description 2</label>
                                             <textarea name="description_2_en" class="form-control summernote"></textarea>
                                         </div>
-
-                                        <!-- <div class="mb-3">
-                                            <label class="form-label">Meta Title</label>
-                                            <input type="text" name="meta_title_en" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Meta Description</label>
-                                            <textarea name="meta_description_en" class="form-control" rows="3"></textarea>
-                                        </div> -->
                                     </div>
 
                                     <!-- Rus dili -->
                                     <div class="tab-pane" id="ru" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Заголовок</label>
-                                            <input type="text" name="title_ru" id="title_ru" class="form-control @error('title_ru') is-invalid @enderror" required>
+                                            <input type="text" name="title_ru" id="title_ru" class="form-control @error('title_ru') is-invalid @enderror">
                                             @error('title_ru')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -222,25 +170,9 @@
                                             @enderror
                                         </div>
 
-                                        <!-- <div class="mb-3">
-                                            <label class="form-label">ALT главного изображения</label>
-                                            <input type="text" name="main_image_alt_ru" class="form-control @error('main_image_alt_ru') is-invalid @enderror" required>
-                                            @error('main_image_alt_ru')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">ALT нижних изображений</label>
-                                            <div id="bottom-images-alt-container-ru">
-                                                <input type="text" name="bottom_images_alt_ru[]" class="form-control mb-2" placeholder="ALT текст">
-                                            </div>
-                                            <button type="button" class="btn btn-warning mt-2" onclick="addBottomImageAlt('ru')">Добавить новый ALT текст</button>
-                                        </div> -->
-
                                         <div class="mb-3">
                                             <label class="form-label">Текст</label>
-                                            <textarea name="text_ru" class="form-control @error('text_ru') is-invalid @enderror" rows="5" required></textarea>
+                                            <textarea name="text_ru" class="form-control @error('text_ru') is-invalid @enderror" rows="5"></textarea>
                                             @error('text_ru')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -255,16 +187,6 @@
                                             <label class="form-label">Описание 2</label>
                                             <textarea name="description_2_ru" class="form-control summernote"></textarea>
                                         </div>
-
-                                        <!-- <div class="mb-3">
-                                            <label class="form-label">Мета-заголовок</label>
-                                            <input type="text" name="meta_title_ru" class="form-control">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label class="form-label">Мета-описание</label>
-                                            <textarea name="meta_description_ru" class="form-control" rows="3"></textarea>
-                                        </div> -->
                                     </div>
                                 </div>
 

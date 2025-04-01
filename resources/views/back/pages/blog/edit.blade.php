@@ -1,6 +1,6 @@
 @extends('back.layouts.master')
 
-@section('title', 'Bloq Redaktə')
+@section('title', 'Yenilik Redaktə')
 
 @section('content')
     <div class="page-content">
@@ -8,11 +8,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Bloq Redaktə</h4>
+                        <h4 class="mb-sm-0">Yenilik Redaktə</h4>
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Ana səhifə</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('back.pages.blog.index') }}">Bloqlar</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('back.pages.blog.index') }}">Yeniliklər</a></li>
                                 <li class="breadcrumb-item active">Redaktə</li>
                             </ol>
                         </div>
@@ -95,7 +95,7 @@
                                     <div class="tab-pane active" id="az" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Başlıq</label>
-                                            <input type="text" name="title_az" id="title_az" value="{{ $blog->title_az }}" class="form-control @error('title_az') is-invalid @enderror" required>
+                                            <input type="text" name="title_az" id="title_az" value="{{ $blog->title_az }}" class="form-control @error('title_az') is-invalid @enderror">
                                             @error('title_az')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -133,7 +133,7 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Mətn</label>
-                                            <textarea name="text_az" class="form-control @error('text_az') is-invalid @enderror" rows="5" required>{{ $blog->text_az }}</textarea>
+                                            <textarea name="text_az" class="form-control @error('text_az') is-invalid @enderror" rows="5">{{ $blog->text_az }}</textarea>
                                             @error('text_az')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -164,7 +164,7 @@
                                     <div class="tab-pane" id="en" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Title</label>
-                                            <input type="text" name="title_en" id="title_en" value="{{ $blog->title_en }}" class="form-control @error('title_en') is-invalid @enderror" required>
+                                            <input type="text" name="title_en" id="title_en" value="{{ $blog->title_en }}" class="form-control @error('title_en') is-invalid @enderror">
                                             @error('title_en')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -202,7 +202,7 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Text</label>
-                                            <textarea name="text_en" class="form-control @error('text_en') is-invalid @enderror" rows="5" required>{{ $blog->text_en }}</textarea>
+                                            <textarea name="text_en" class="form-control @error('text_en') is-invalid @enderror" rows="5">{{ $blog->text_en }}</textarea>
                                             @error('text_en')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -233,7 +233,7 @@
                                     <div class="tab-pane" id="ru" role="tabpanel">
                                         <div class="mb-3">
                                             <label class="form-label">Заголовок</label>
-                                            <input type="text" name="title_ru" id="title_ru" value="{{ $blog->title_ru }}" class="form-control @error('title_ru') is-invalid @enderror" required>
+                                            <input type="text" name="title_ru" id="title_ru" value="{{ $blog->title_ru }}" class="form-control @error('title_ru') is-invalid @enderror">
                                             @error('title_ru')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -271,7 +271,7 @@
 
                                         <div class="mb-3">
                                             <label class="form-label">Текст</label>
-                                            <textarea name="text_ru" class="form-control @error('text_ru') is-invalid @enderror" rows="5" required>{{ $blog->text_ru }}</textarea>
+                                            <textarea name="text_ru" class="form-control @error('text_ru') is-invalid @enderror" rows="5">{{ $blog->text_ru }}</textarea>
                                             @error('text_ru')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
